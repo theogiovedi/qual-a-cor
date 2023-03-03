@@ -113,6 +113,12 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: var(--foreground-color);
+    color: var(--background-color);
+    transition: ease-in-out 0.3s;
+}
+
 #columns {
     display: flex;
     flex-direction: row;
