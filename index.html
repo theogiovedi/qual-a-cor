@@ -27,17 +27,26 @@
         <h1>Qual a Cor?</h1>
         <div id="columns">
             <div class="column">
-                <p>Digite o código hexadecimal da cor que deseja pesquisar</p>
-                <input type="text" placeholder="ex: #E60026" size="8" maxlength="7">
+                <label>
+                    <p>Digite o código hexadecimal da cor que deseja pesquisar</p>
+                    <input type="text" placeholder="ex: #E60026" size="8" maxlength="7" id="text">
+                </label>
             </div>
             <div class="column">
-                <p>Ou utilize o seletor de cores abaixo</p>
-                <input type="color" value="#E60026">
+                <label>
+                    <p>Ou utilize o seletor de cores abaixo</p>
+                    <input type="color" value="#E60026" id="color-picker">
+                </label>
             </div>
         </div>
 
-        <button>Pesquisar</button>
+        <button id="results-button">Pesquisar</button>
+
+        <div id="results">
+
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
+
 </html>

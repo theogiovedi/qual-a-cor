@@ -193,6 +193,7 @@ const colors = {
 
 const darkMode = document.getElementById("toggle-dark-mode");
 const logo = document.getElementById("navlogo");
+const resultsButton = document.getElementById("results-button");
 
 function toggleDarkMode() {
     const root = document.querySelector(":root");
@@ -218,7 +219,6 @@ function toggleDarkMode() {
     }
 }
 
-darkMode.addEventListener("click", toggleDarkMode)
 
 function getColorDifference(rgb, rgb2) {
     const red = parseInt(rgb[1] + rgb[2], 16);
@@ -244,3 +244,44 @@ function getClosestColor(rgb) {
     });
     return minDifferenceHex;
 }
+
+function getColorName(rgb) {
+    return colors[rgb];
+}
+
+function showResults() {
+    let color = document.getElementById("text").value;
+    if (!color) {
+        color = document.getElementById("color-picker").value;
+    }
+
+    const colorHex = getClosestColor(color);
+    const colorName = getColorName(colorHex);
+
+    const results = document.getElementById("results");
+    results.innerHTML = "";
+
+    const title = document.createElement("h2");
+    title.innerHTML = "Resultados";
+    results.appendChild(title);
+
+    const colorNameElement = document.createElement("h3");
+    colorNameElement.innerHTML = colorName;
+    results.appendChild(colorNameElement);
+
+    const colorHexElement = document.createElement("p");
+    colorHexElement.innerHTML = "Normal: ";
+    results.appendChild(colorHexElement);
+
+    const colorHexSquare = document.createElement("div");
+    colorHexSquare.classList.add("color-square");
+    colorHexSquare.style.backgroundColor = colorHex;
+    colorHexElement.appendChild(colorHexSquare);
+
+    const colorHexNameElement = document.createElement("code");
+    colorHexNameElement.innerHTML = colorHex;
+    colorHexElement.append(colorHexNameElement);
+}
+
+darkMode.addEventListener("click", toggleDarkMode);
+resultsButton.addEventListener("click", showResults);
