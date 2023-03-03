@@ -52,7 +52,7 @@ nav > ul a {
     color: var(--foreground-color);
 }
 
-@media only screen and (max-width: 512px) {
+@media only screen and (max-width: 760px) {
     nav {
         flex-direction: column;
     }
@@ -62,4 +62,66 @@ nav > ul a {
     nav > ul {
         font-size: 24px;
     }
+}
+
+h1 {
+    color: var(--foreground-color);
+    font-size: 64px;
+    text-align: center;
+    margin: 30px 0;
+}
+
+p {
+    color: var(--foreground-color);
+    font-size: 20px;
+    text-align: center;
+    margin: 25px 0;
+}
+
+input[type="text"] {
+    outline: none;
+    font-family: inherit;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    display: block;
+    margin: 25px auto;
+    font-size: 40px;
+    padding: 5px;
+    text-align: center;
+    border: 3px solid var(--foreground-color);
+}
+
+input[type="color"] {
+    display: block;
+    margin: 25px auto;
+    border: 3px solid var(--foreground-color);
+    width: 258px;
+    height: 64px;
+    padding: 5px;
+    background-color: var(--background-color);
+}
+
+button {
+    display: block;
+    margin: 25px auto;
+    border: 3px solid var(--foreground-color);
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    font-size: 22px;
+    font-family: inherit;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#columns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.column {
+    width: 300px;
+    margin: 0 40px;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +10,34 @@
     <link rel="stylesheet" href="styles.css">
     <title>Qual a Cor? | Home</title>
 </head>
-<body>
-<header>
-    <nav>
-        <a href="index.html"><img src="navlogo-light.png" alt="Logo do Qual a Cor?" id="navlogo"></a>
-        <ul>
-            <li><a href="./dicas.html">Dicas</a></li>
-            <li><a href="./sobre.html">Sobre</a></li>
-            <li><i class="bi bi-moon-stars-fill" id="toggle-dark-mode"></i></li>
-        </ul>
-    </nav>
-</header>
 
-<script src="script.js"></script>
+<body>
+    <header>
+        <nav>
+            <a href="index.html"><img src="navlogo-light.png" alt="Logo do Qual a Cor?" id="navlogo"></a>
+            <ul>
+                <li><a href="./dicas.html">Dicas</a></li>
+                <li><a href="./sobre.html">Sobre</a></li>
+                <li><i class="bi bi-moon-stars-fill" id="toggle-dark-mode"></i></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Qual a Cor?</h1>
+        <div id="columns">
+            <div class="column">
+                <p>Digite o código hexadecimal da cor que deseja pesquisar</p>
+                <input type="text" placeholder="ex: #E60026" size="8" maxlength="7">
+            </div>
+            <div class="column">
+                <p>Ou utilize o seletor de cores abaixo</p>
+                <input type="color" value="#E60026">
+            </div>
+        </div>
+
+        <button>Pesquisar</button>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>
