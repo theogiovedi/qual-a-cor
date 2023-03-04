@@ -1,6 +1,6 @@
 const colors = {
     "#f4c430": "Açafrão",
-    "#00ffff": "Água / Ciano",
+    "#00ffff": "Ciano",
     "#7fffd4": "Água-marinha",
     "#66cdaa": "Água-marinha média",
     "#e32636": "Alizarina",
@@ -62,7 +62,7 @@ const colors = {
     "#dc143c": "Carmesim",
     "#712f26": "Carmim",
     "#f5fffb": "Carmim carnáceo",
-    "#8b0000": "Castanho avermelhado / Vermelho escuro",
+    "#8b0000": "Castanho avermelhado",
     "#d2b48c": "Castanho claro",
     "#ed9121": "Cenoura",
     "#de3163": "Cereja",
@@ -72,7 +72,7 @@ const colors = {
     "#008b8b": "Ciano escuro",
     "#808080": "Cinza",
     "#708090": "Cinza ardósia",
-    "#778899": "Cinza ardósia claro / Dainise",
+    "#778899": "Cinza ardósia claro",
     "#2f4f4f": "Cinza ardósia escuro",
     "#d3d3d3": "Cinza claro",
     "#a9a9a9": "Cinza escuro",
@@ -93,12 +93,12 @@ const colors = {
     "#50c878": "Esmeralda",
     "#d19275": "Feldspato",
     "#b7410e": "Ferrugem",
-    "#ff00ff": "Fúchsia / Magenta",
+    "#ff00ff": "Magenta",
     "#3d2b1f": "Fuligem",
     "#831d1c": "Grená",
     "#2e8b57": "Herbal",
     "#4b0082": "Índigo",
-    "#000000": "Jabuti preto / Preto",
+    "#000000": "Preto",
     "#00a86b": "Jade",
     "#ff4500": "Jambo",
     "#ff8c00": "Laranja escuro",
@@ -107,7 +107,7 @@ const colors = {
     "#e6e6fa": "Lavanda",
     "#c8a2c8": "Lilás",
     "#fde910": "Lima",
-    "#00ff00": "Limão (cor) / Verde espectro",
+    "#00ff00": "Limão",
     "#faf0e6": "Linho",
     "#deb887": "Madeira",
     "#8b008b": "Magenta escuro",
@@ -249,14 +249,96 @@ function getColorName(rgb) {
     return colors[rgb];
 }
 
+
+function multiplyMatrix(red, green, blue, matrix) {
+    const rgb = [
+        [red / 255],
+        [green / 255],
+        [blue / 255]
+    ]
+
+    console.log(matrix);
+    const simulatedRgb = [
+        [(rgb[0][0] * matrix[0][0]) + (rgb[1][0] * matrix[0][1]) + (rgb[2][0] * matrix[0][2])],
+        [(rgb[0][0] * matrix[1][0]) + (rgb[1][0] * matrix[1][1]) + (rgb[2][0] * matrix[1][2])],
+        [(rgb[0][0] * matrix[2][0]) + (rgb[1][0] * matrix[2][1]) + (rgb[2][0] * matrix[2][2])]
+    ]
+
+    if (simulatedRgb[0][0] < 0) {
+        simulatedRgb[0][0] = 0;
+    } else if (simulatedRgb[0][0] > 1) {
+        simulatedRgb[0][0] = 1;
+    }
+
+    if (simulatedRgb[1][0] < 0) {
+        simulatedRgb[1][0] = 0;
+    } else if (simulatedRgb[1][0] > 1) {
+        simulatedRgb[1][0] = 1;
+    }
+
+
+    if (simulatedRgb[2][0] < 0) {
+        simulatedRgb[2][0] = 0;
+    } else if (simulatedRgb[2][0] > 1) {
+        simulatedRgb[2][0] = 1;
+    }
+
+    console.log(simulatedRgb)
+    
+    return [Math.floor(simulatedRgb[0][0] * 255), Math.floor(simulatedRgb[1][0] * 255), Math.floor(simulatedRgb[2][0] * 255)];
+}
+
+function normalToProtanomaly(rgb) {
+    const red = parseInt(rgb[1] + rgb[2], 16);
+    const green =  parseInt(rgb[3] + rgb[4], 16);
+    const blue = parseInt(rgb[5] + rgb[6], 16);
+    const protanomalyMatrix = [
+        [ 0.152286, 1.052583, -0.204868 ],
+        [ 0.114503, 0.786281, 0.099216 ],
+        [ -0.003882, -0.048116, 1.051998 ]
+    ]
+    const simulatedRgb = multiplyMatrix(red, green, blue, protanomalyMatrix);
+    return "#" + simulatedRgb[0].toString(16).padStart(2, "0") + simulatedRgb[1].toString(16).padStart(2, "0") + simulatedRgb[2].toString(16).padStart(2, "0")
+}
+
+function normalToDeuteranomaly(rgb) {
+    const red = parseInt(rgb[1] + rgb[2], 16);
+    const green =  parseInt(rgb[3] + rgb[4], 16);
+    const blue = parseInt(rgb[5] + rgb[6], 16);
+    const deuteranomalyMatrix = [
+        [ 0.367322, 0.860646, -0.227968 ],
+        [ 0.280085, 0.672501, 0.047413 ],
+        [ -0.011820, 0.042940, 0.968881 ]
+    ]
+    const simulatedRgb = multiplyMatrix(red, green, blue, deuteranomalyMatrix);
+    return "#" + simulatedRgb[0].toString(16).padStart(2, "0") + simulatedRgb[1].toString(16).padStart(2, "0") + simulatedRgb[2].toString(16).padStart(2, "0")
+}
+
+function normalToTritanomaly(rgb) {
+    const red = parseInt(rgb[1] + rgb[2], 16);
+    const green =  parseInt(rgb[3] + rgb[4], 16);
+    const blue = parseInt(rgb[5] + rgb[6], 16);
+    const tritanomalyMatrix = [
+        [ 1.255528, -0.076749, -0.178779 ],
+        [ -0.078411, 0.930809, 0.147602 ],
+        [ 0.004733, 0.691367, 0.303900 ]
+    ]
+    const simulatedRgb = multiplyMatrix(red, green, blue, tritanomalyMatrix);
+    return "#" + simulatedRgb[0].toString(16).padStart(2, "0") + simulatedRgb[1].toString(16).padStart(2, "0") + simulatedRgb[2].toString(16).padStart(2, "0")
+}
+
 function showResults() {
     let color = document.getElementById("text").value;
     if (!color) {
         color = document.getElementById("color-picker").value;
     }
 
-    const colorHex = getClosestColor(color);
-    const colorName = getColorName(colorHex);
+    const colorHex = color;
+    const closestColor = getClosestColor(colorHex)
+    const colorProt = normalToProtanomaly(colorHex);
+    const colorDeut = normalToDeuteranomaly(colorHex);
+    const colorTrit = normalToTritanomaly(colorHex);
+    const colorName = getColorName(closestColor);
 
     const results = document.getElementById("results");
     results.innerHTML = "";
@@ -267,6 +349,12 @@ function showResults() {
 
     const colorNameElement = document.createElement("h3");
     colorNameElement.innerHTML = colorName;
+    if (colorHex != closestColor) {
+        const approxElement = document.createElement("span");
+        approxElement.innerHTML = "aprox.";
+        approxElement.classList.add("approx");
+        colorNameElement.appendChild(approxElement);
+    }
     results.appendChild(colorNameElement);
 
     const colorHexElement = document.createElement("p");
@@ -281,6 +369,45 @@ function showResults() {
     const colorHexNameElement = document.createElement("code");
     colorHexNameElement.innerHTML = colorHex;
     colorHexElement.append(colorHexNameElement);
+
+    const colorProtElement = document.createElement("p");
+    colorProtElement.innerHTML = "Protanomalia: ";
+    results.appendChild(colorProtElement);
+
+    const colorProtSquare = document.createElement("div");
+    colorProtSquare.classList.add("color-square");
+    colorProtSquare.style.backgroundColor = colorProt;
+    colorProtElement.appendChild(colorProtSquare);
+
+    const colorProtHexElement = document.createElement("code");
+    colorProtHexElement.innerHTML = colorProt;
+    colorProtElement.append(colorProtHexElement);
+
+    const colorDeutElement = document.createElement("p");
+    colorDeutElement.innerHTML = "Deuteranomalia: ";
+    results.appendChild(colorDeutElement);
+
+    const colorDeutSquare = document.createElement("div");
+    colorDeutSquare.classList.add("color-square");
+    colorDeutSquare.style.backgroundColor = colorDeut;
+    colorDeutElement.appendChild(colorDeutSquare);
+
+    const colorDeutHexElement = document.createElement("code");
+    colorDeutHexElement.innerHTML = colorDeut;
+    colorDeutElement.append(colorDeutHexElement);
+
+    const colorTritElement = document.createElement("p");
+    colorTritElement.innerHTML = "Tritanomalia: ";
+    results.appendChild(colorTritElement);
+
+    const colorTritSquare = document.createElement("div");
+    colorTritSquare.classList.add("color-square");
+    colorTritSquare.style.backgroundColor = colorTrit;
+    colorTritElement.appendChild(colorTritSquare);
+
+    const colorTritHexElement = document.createElement("code");
+    colorTritHexElement.innerHTML = colorTrit;
+    colorTritElement.append(colorTritHexElement);
 }
 
 darkMode.addEventListener("click", toggleDarkMode);
