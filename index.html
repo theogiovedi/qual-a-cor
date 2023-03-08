@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -25,11 +24,11 @@
 
     <main>
         <h1>Qual a Cor?</h1>
-        <div id="columns">
+        <div class="columns">
             <div class="column">
                 <label>
                     <p>Digite o código hexadecimal da cor que deseja pesquisar</p>
-                    <input type="text" placeholder="ex: #E60026" size="8" maxlength="7" id="text">
+                    <input type="text" placeholder="ex: #E60026" maxlength="7" id="text">
                 </label>
             </div>
             <div class="column">
@@ -43,10 +42,51 @@
         <button id="results-button">Pesquisar</button>
 
         <div id="results">
-
         </div>
+        <div id="contrast">
+        </div>
+        <div id="examples">
+        </div>
+        <div id="learn-more">
+        </div>
+        <footer id="main-footer">
+        </footer>
     </main>
-    <script src="script.js"></script>
+    <footer>
+        <style>
+            .credits {
+                text-align: center;
+            }
+
+            .credits-text {
+                font-size: 18px;
+            }
+
+            .credits-heart {
+                margin: 2px;
+                animation: credits-heart 1.5s linear infinite;
+            }
+
+            @keyframes credits-heart {
+                0% {
+                    opacity: 0.3;
+                }
+
+                50% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0.3;
+                }
+            }
+        </style>
+        <div class="credits">
+            <p class="credits-text"> Feito com <span class="credits-heart">❤️</span> por <a class="credits-link"
+                    href="https://github.com/theogiovedi" target="_blank">Théo Giovedi</a></p>
+        </div>
+    </footer>
+    <script src="main.js"></script>
 </body>
 
 </html>
