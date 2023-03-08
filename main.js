@@ -517,7 +517,7 @@ function updateContrastValues() {
         protContrastSmall.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
 
-    deutContrastRatio.innerHTML = "Razão de Contraste: " +deutContrast;
+    deutContrastRatio.innerHTML = "Razão de Contraste: " + deutContrast;
 
     if (deutContrast >= 4.5) {
         deutContrastBig.innerHTML = "Para fontes grandes: Nível AAA";
@@ -857,32 +857,14 @@ function updateExamplesValues() {
     rect4Trit.setAttribute("fill", normalToTritanomaly(color4));
 }
 
-function showResults() {
-    let colorHex;
-    const color = document.getElementById("text").value;
-    if (!color) {
-        colorHex = document.getElementById("color-picker").value;
-    } else {
-        colorHex = color;
-    }
+function createResults(colorHex) {
+    const results = document.getElementById("results");
+    results.innerHTML = "";
+    const closestColor = getClosestColor(colorHex);
+    const colorName = getColorName(closestColor);
     const colorProt = normalToProtanomaly(colorHex);
     const colorDeut = normalToDeuteranomaly(colorHex);
     const colorTrit = normalToTritanomaly(colorHex);
-
-    const results = document.getElementById("results");
-    const contrast = document.getElementById("contrast");
-    const examples = document.getElementById("examples");
-    const learnMore = document.getElementById("learn-more");
-    const mainFooter = document.getElementById("main-footer");
-
-    results.innerHTML = "";
-    contrast.innerHTML = "";
-    examples.innerHTML = "";
-    learnMore.innerHTML = "";
-    mainFooter.innerHTML = "";
-
-    const closestColor = getClosestColor(colorHex);
-    const colorName = getColorName(closestColor);
 
     const title = document.createElement("h2");
     title.innerHTML = "Resultados";
@@ -949,10 +931,15 @@ function showResults() {
     const colorTritHexElement = document.createElement("code");
     colorTritHexElement.innerHTML = colorTrit;
     colorTritElement.append(colorTritHexElement);
+}
 
-    // CONTRASTE
-
+function createContrast(colorHex) {
+    const contrast = document.getElementById("contrast");
+    contrast.innerHTML = "";
     const relativeLuminance = getRelativeLuminance(colorHex);
+    const colorProt = normalToProtanomaly(colorHex);
+    const colorDeut = normalToDeuteranomaly(colorHex);
+    const colorTrit = normalToTritanomaly(colorHex);
     let bgColor = colorHex;
     let fgColor;
     if (relativeLuminance < 0.5) {
@@ -1173,9 +1160,11 @@ function showResults() {
         titleTritanomalyContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
     contrast.appendChild(titleTritanomalyContrastSmallElement);
+}
 
-    // EXAMPLES
-
+function createExamples(colorHex) {
+    const examples = document.getElementById("examples");
+    examples.innerHTML = "";
     const examplesTitleElement = document.createElement("h2");
     examplesTitleElement.innerHTML = "Exemplos";
     examples.appendChild(examplesTitleElement);   
@@ -1304,20 +1293,55 @@ function showResults() {
     examples.appendChild(titleTritGraphic);
 
     createSVG("trit", normalToTritanomaly(color1), normalToTritanomaly(color2), normalToTritanomaly(color3), normalToTritanomaly(color4));
+}
 
-    // LEARN MORE
-
+function createLearnMore(colorName) {
+    const learnMore = document.getElementById("learn-more");
+    learnMore.innerHTML = "";
     const learnMoreElement = document.createElement("a");
     learnMoreElement.href = `https://google.com/search?q=${colorName.replace(" ", "+")}+cor`
     learnMoreElement.innerHTML = `Saiba mais sobre ${colorName}`;
     learnMoreElement.target = "_blank";
-    learnMore.appendChild(learnMoreElement)
+    learnMore.appendChild(learnMoreElement);
+}
 
-    // FOOTNOTES
-
+function createMainFooter() {
+    const mainFooter = document.getElementById("main-footer");
+    mainFooter.innerHTML = "";
     const constrastExplanationElement = document.createElement("p");
     constrastExplanationElement.innerHTML = "O Nível AA indica a conformidade mínima com a WCAG 2.1, com uma razão de contraste de 3:1 para textos grandes (mais de 18 pt em tamanho normal ou 14 pt em negrito) e 4.5:1 para textos pequenos (menores que 18 pt). No nível AAA, que indica a conformidade elevada com a WCAG 2.1, as razões de contraste sobem para 4.5:1 e 7:1, respectivamente.";
     mainFooter.appendChild(constrastExplanationElement);
+}
+
+function showResults() {
+    let colorHex;
+    const color = document.getElementById("text").value;
+    if (!color) {
+        colorHex = document.getElementById("color-picker").value;
+    } else {
+        colorHex = color;
+    }
+
+    const closestColor = getClosestColor(colorHex);
+    const colorName = getColorName(closestColor);
+
+    createResults(colorHex);
+
+    // CONTRAST
+
+    createContrast(colorHex);
+
+    // EXAMPLES
+
+    createExamples(colorHex);
+
+    // LEARN MORE
+
+    createLearnMore(colorName);
+
+    // FOOTNOTES
+
+    createMainFooter();
 }
 
 darkMode.addEventListener("click", toggleDarkMode);
