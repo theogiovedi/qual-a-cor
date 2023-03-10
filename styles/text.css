@@ -1,6 +1,11 @@
 @import url('./general.css');
 
-main :not(h1) {
+
+article {
+    color: var(--foreground-color);
+}
+
+article :not(h1) {
     font-size: 22px;
     margin: 30px auto;
     width: calc(100% - 30px);    
@@ -9,8 +14,12 @@ main :not(h1) {
     line-height: calc(22px * 1.45);
 }
 
-main > ul li {
+article > ul li {
     margin: 25px 0;
+}
+
+sup {
+    color: var(--secondary-color);
 }
 
 @media only screen and (max-width: 760px) {
