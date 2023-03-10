@@ -1,0 +1,26 @@
+@import url('./general.css');
+
+main :not(h1) {
+    font-size: 22px;
+    margin: 30px auto;
+    width: calc(100% - 30px);    
+    padding-left: 12px;
+    max-width: 600px;
+    line-height: calc(22px * 1.45);
+}
+
+main > ul li {
+    margin: 25px 0;
+}
+
+@media only screen and (max-width: 760px) {
+    nav {
+        flex-direction: column;
+    }
+    nav img {
+        margin-bottom: 10px;
+    }
+    nav > ul {
+        font-size: 24px;
+    }
+}
