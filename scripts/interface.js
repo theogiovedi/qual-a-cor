@@ -29,7 +29,7 @@ export function toggleDarkMode() {
         root.style.setProperty("--secondary-color", darkGray)
         darkMode.classList.toggle("bi-moon-stars-fill");
         darkMode.classList.toggle("bi-brightness-high-fill");
-        logo.src = "navlogo-light.png";
+        logo.src = "./images/navlogo-light.png";
 
         // SVG Elements
         
@@ -96,7 +96,7 @@ export function toggleDarkMode() {
         root.style.setProperty("--secondary-color", gray);
         darkMode.classList.toggle("bi-moon-stars-fill");
         darkMode.classList.toggle("bi-brightness-high-fill");
-        logo.src = "navlogo-dark.png";
+        logo.src = "./images/navlogo-dark.png";
         
         // SVG Elements
         
