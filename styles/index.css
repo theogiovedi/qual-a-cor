@@ -77,13 +77,12 @@ h3 {
 }
 
 #results p {
-    position: relative;
     display: flex;
+    flex-wrap: nowrap;
     margin: 40px auto;
     width: calc(100% - 10px);
     max-width: 500px;
     font-size: 30px;
-    z-index: -999;
 }
 
 .color-square {
