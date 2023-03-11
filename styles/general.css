@@ -30,7 +30,7 @@ nav {
     padding: 20px;
 }
 
-nav > ul {
+nav>ul {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,7 +40,7 @@ nav > ul {
     font-size: 24px;
 }
 
-nav > ul li {
+nav>ul li {
     list-style-type: none;
 }
 
@@ -73,7 +73,8 @@ p {
 #main-footer p {
     color: var(--secondary-color);
     font-size: 14px;
-    width: 700px;
+    width: calc(100% - 40px);
+    max-width: 700px;
     text-align: left;
     margin: 20px auto;
     line-height: 20px;

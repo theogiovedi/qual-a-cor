@@ -1,4 +1,4 @@
-import { toggleDarkMode, createResults, createContrast, createExamples, createLearnMore, createMainFooter} from './interface.js'
+import { toggleDarkMode, createResults, createContrast, createExamples, createLearnMore, createMainFooter } from './interface.js'
 import { getClosestColor } from './calc.js'
 import { getColorName } from './colors.js'
 

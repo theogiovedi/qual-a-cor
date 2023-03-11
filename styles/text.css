@@ -1,35 +1,51 @@
 @import url('./general.css');
 
-
 article {
+    display: block;
     color: var(--foreground-color);
-}
-
-article :not(h1) {
+    margin: 0 auto;
     font-size: 22px;
-    margin: 30px auto;
-    width: calc(100% - 30px);    
-    padding-left: 12px;
+    width: calc(100% - 40px);
     max-width: 600px;
     line-height: calc(22px * 1.45);
 }
 
-article > ul li {
-    margin: 25px 0;
+h1 {
+    margin: 50px 0;
+}
+
+article>ul {
+    padding-left: 30px;
+}
+
+article>ul li {
+    margin: 20px 0;
+}
+
+article>p {
+    font-size: 22px;
+    text-align: justify;
+}
+
+article a {
+    text-decoration: underline;
 }
 
 sup {
     color: var(--secondary-color);
+    margin-left: 5px;
 }
 
 @media only screen and (max-width: 760px) {
     nav {
         flex-direction: column;
     }
+
     nav img {
         margin-bottom: 10px;
     }
-    nav > ul {
+
+    nav>ul {
         font-size: 24px;
     }
 }

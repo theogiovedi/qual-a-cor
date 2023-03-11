@@ -23,7 +23,40 @@
     </header>
 
     <main>
-        <h1>Sobre</h1>
+        <article>
+            <h1>Sobre</h1>
+            <p>O Qual a Cor? é um projeto criado para ajudar pessoas com daltonismo a identificar de maneira eficiente e
+                eficaz os nomes corretos das cores. Além disso, o site também oferece ferramentas para desenvolvedores
+                interessados em promover uma acessibilidade maior para daltônicos em seus produtos.</p>
+            <p>A ferramenta tem como origem um projeto de Trabalho de Conclusão de Curso para um curso técnico de
+                Informática para Internet e foi criada com a idéia de fornecer funcionalidades integradas em um único
+                lugar para facilitar o cotidiano de pessoas com dificuldades na identificação e percepção das cores.</p>
+            <p>A lista com os nomes de cores foi composta a partir da <a
+                    href="https://pt.wikipedia.org/wiki/Lista_de_cores">Lista de cores</a> da Wikipédia em Português,
+                selecionando apenas as cores que tinham correspondência com as keywords de cores presentes no CSS. O
+                método de busca do nome das cores foi feito através da distância Euclidiana, interpretando o espaço de
+                cores RGB como um cubo onde cada dimensão corresponde a vermelho, verde ou azul.</p>
+            <p>O modelo de simulação de deficiência na percepção das cores utilizado tem sua origem no artigo "<a
+                    href="https://www.inf.ufrgs.br/~oliveira/pubs_files/CVD_Simulation/CVD_Simulation.html">A
+                    Physiologically-based Model for Simulation of Color Vision Deficiency</a>", escrito por Gustavo
+                Machado, Manuel Oliveira e Leandro Fernandes. A implementação foi feita usando como base as matrizes
+                pré-computadas de protanomalia, deuteranomalia e tritanomalia em suas severidades mais elevadas,
+                oferecidas pelos autores.</p>
+            <p>O cálculo de contraste foi feito utilizando as informações e equações presentes na W3C Wiki e nas
+                Diretrizes de Acessibilidade para Conteúdo Web da W3C em sua versão 2.1</p>
+            <p>É importante ressaltar que os resultados tanto da busca de cores, o modelo de simulação quanto do cálculo
+                de contraste não são precisos. A busca de cores retorna o nome da cor mais próxima presente na lista de
+                cores do site, não necessariamente correspondendo ao nome correto da cor específica fornecida pelo
+                usuário. Qualquer modelo de simulação da deficiência na percepção das cores, mesmo que preciso, não é
+                perfeito pois simula uma condição com variações significativas de indivíduo para indivíduo, fora a
+                possibilidade de inconsistências na implementação do modelo por parte do Qual a Cor?. O cálculo de
+                contraste também <a href="https://www.w3.org/WAI/GL/wiki/Relative_luminance#ERRATA_NOTICE">não é
+                    perfeito</a>, mesmo sendo baseado no documento mais recente (em sua versão já consolidada,
+                descartando as versões 2.2 e 3.0, ainda em desenvolvimento) da W3C sobre o assunto.</p>
+            <p>Mesmo que seu autor não tenha daltonismo, o site nasceu com o intuito de tornar a web mais acessível para
+                350 milhões de pessoas mundo afora, principalmente aquelas que falam português, e permitir que a criação
+                de produtos digitais com acessibilidade para essa população seja mais fácil e rápida.</p>
+        </article>
     </main>
     <footer>
         <style>

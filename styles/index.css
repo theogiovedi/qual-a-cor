@@ -70,12 +70,13 @@ h3 {
     color: var(--foreground-color);
 }
 
-#results, #contrast {
+#results,
+#contrast {
     margin: 0 auto;
     width: 100%;
 }
 
-#results p  {
+#results p {
     position: relative;
     display: flex;
     margin: 40px auto;
@@ -110,7 +111,7 @@ h4 {
     margin-top: 40px;
 }
 
-label > h4 {
+label>h4 {
     margin-top: 0;
 }
 
@@ -168,12 +169,15 @@ svg {
     nav {
         flex-direction: column;
     }
+
     nav img {
         margin-bottom: 10px;
     }
-    nav > ul {
+
+    nav>ul {
         font-size: 24px;
     }
+
     #main-footer p {
         width: calc(100% - 40px);
     }
@@ -192,6 +196,7 @@ svg {
         font-size: 50px;
         margin: 10px;
     }
+
     h6 {
         margin: 0 10px 25px 10px;
     }
@@ -209,21 +214,27 @@ svg {
 }
 
 @media only screen and (max-width: 370px) {
-    input[type="text"], input[type="color"] {
+
+    input[type="text"],
+    input[type="color"] {
         width: calc(100% - 20px);
     }
+
     input[type="text"] {
         font-size: 40px;
     }
+
     .approx {
         display: block;
         margin: 0;
     }
+
     #results p {
         font-size: 18px;
         width: 100%;
         margin: 15px 10px;
     }
+
     .color-square {
         width: 20px;
         height: 20px;

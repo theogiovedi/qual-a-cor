@@ -4,7 +4,7 @@ import { normalToProtanomaly, normalToDeuteranomaly, normalToTritanomaly, getRel
 import { createSVG } from './svg.js';
 
 export function toggleDarkMode() {
-    
+
     // Page Elements
     const root = document.querySelector(":root");
     const logo = document.getElementById("navlogo");
@@ -15,7 +15,7 @@ export function toggleDarkMode() {
     const white = style.getPropertyValue("--white");
     const gray = style.getPropertyValue("--gray");
     const darkGray = style.getPropertyValue("--dark-gray");
-    
+
     // SVG Elements
     const svgNormal = document.getElementById("svg-normal");
     const svgProt = document.getElementById("svg-prot");
@@ -32,7 +32,7 @@ export function toggleDarkMode() {
         logo.src = "./images/navlogo-light.png";
 
         // SVG Elements
-        
+
         if (!svgNormal) {
             return;
         }
@@ -43,7 +43,7 @@ export function toggleDarkMode() {
             fgNormal[i].setAttribute("stroke", black);
             fgNormal[i].setAttribute("fill", black);
         }
-    
+
         const bgNormal = svgNormal.getElementsByClassName("bg-line");
         for (let i = 0; i < bgNormal.length; i++) {
             bgNormal[i].setAttribute("stroke", gray);
@@ -56,7 +56,7 @@ export function toggleDarkMode() {
             fgProt[i].setAttribute("stroke", black);
             fgProt[i].setAttribute("fill", black);
         }
-        
+
         const bgProt = svgProt.getElementsByClassName("bg-line");
         for (let i = 0; i < bgProt.length; i++) {
             bgProt[i].setAttribute("stroke", gray);
@@ -69,13 +69,13 @@ export function toggleDarkMode() {
             fgDeut[i].setAttribute("stroke", black);
             fgDeut[i].setAttribute("fill", black);
         }
-        
+
         const bgDeut = svgDeut.getElementsByClassName("bg-line");
         for (let i = 0; i < bgDeut.length; i++) {
             bgDeut[i].setAttribute("stroke", gray);
             bgDeut[i].setAttribute("fill", gray);
         }
-        
+
         // Trit
         const fgTrit = svgTrit.getElementsByClassName("fg-line");
         for (let i = 0; i < fgTrit.length; i++) {
@@ -87,9 +87,9 @@ export function toggleDarkMode() {
             bgTrit[i].setAttribute("stroke", gray);
             bgTrit[i].setAttribute("fill", gray);
         }
-        
 
-    // To Dark Mode
+
+        // To Dark Mode
     } else {
         root.style.setProperty("--foreground-color", white);
         root.style.setProperty("--background-color", black);
@@ -97,9 +97,9 @@ export function toggleDarkMode() {
         darkMode.classList.toggle("bi-moon-stars-fill");
         darkMode.classList.toggle("bi-brightness-high-fill");
         logo.src = "./images/navlogo-dark.png";
-        
+
         // SVG Elements
-        
+
         if (!svgNormal) {
             return;
         }
@@ -139,7 +139,7 @@ export function toggleDarkMode() {
             bgDeut[i].setAttribute("stroke", darkGray);
             bgDeut[i].setAttribute("fill", darkGray);
         }
-        
+
         // Trit
         const fgTrit = svgTrit.getElementsByClassName("fg-line");
         for (let i = 0; i < fgTrit.length; i++) {
@@ -171,7 +171,7 @@ export function updateContrastValues() {
     const deutContrastRatio = document.getElementById("deut-contrast-ratio");
     const deutContrastBig = document.getElementById("deut-contrast-big");
     const deutContrastSmall = document.getElementById("deut-contrast-small");
-    
+
     const tritContrastRatio = document.getElementById("trit-contrast-ratio");
     const tritContrastBig = document.getElementById("trit-contrast-big");
     const tritContrastSmall = document.getElementById("trit-contrast-small");
@@ -335,17 +335,17 @@ export function updateExamplesValues() {
     line2Normal.setAttribute("stroke", color2);
     line3Normal.setAttribute("stroke", color3);
     line4Normal.setAttribute("stroke", color4);
-    
+
     line1Prot.setAttribute("stroke", normalToProtanomaly(color1));
     line2Prot.setAttribute("stroke", normalToProtanomaly(color2));
     line3Prot.setAttribute("stroke", normalToProtanomaly(color3));
     line4Prot.setAttribute("stroke", normalToProtanomaly(color4));
-    
+
     line1Deut.setAttribute("stroke", normalToDeuteranomaly(color1));
     line2Deut.setAttribute("stroke", normalToDeuteranomaly(color2));
     line3Deut.setAttribute("stroke", normalToDeuteranomaly(color3));
     line4Deut.setAttribute("stroke", normalToDeuteranomaly(color4));
-    
+
     line1Trit.setAttribute("stroke", normalToTritanomaly(color1));
     line2Trit.setAttribute("stroke", normalToTritanomaly(color2));
     line3Trit.setAttribute("stroke", normalToTritanomaly(color3));
@@ -355,17 +355,17 @@ export function updateExamplesValues() {
     rect2Normal.setAttribute("fill", color2);
     rect3Normal.setAttribute("fill", color3);
     rect4Normal.setAttribute("fill", color4);
-    
+
     rect1Prot.setAttribute("fill", normalToProtanomaly(color1));
     rect2Prot.setAttribute("fill", normalToProtanomaly(color2));
     rect3Prot.setAttribute("fill", normalToProtanomaly(color3));
     rect4Prot.setAttribute("fill", normalToProtanomaly(color4));
-    
+
     rect1Deut.setAttribute("fill", normalToDeuteranomaly(color1));
     rect2Deut.setAttribute("fill", normalToDeuteranomaly(color2));
     rect3Deut.setAttribute("fill", normalToDeuteranomaly(color3));
     rect4Deut.setAttribute("fill", normalToDeuteranomaly(color4));
-    
+
     rect1Trit.setAttribute("fill", normalToTritanomaly(color1));
     rect2Trit.setAttribute("fill", normalToTritanomaly(color2));
     rect3Trit.setAttribute("fill", normalToTritanomaly(color3));
@@ -682,7 +682,7 @@ export function createExamples(colorHex) {
     examples.innerHTML = "";
     const examplesTitleElement = document.createElement("h2");
     examplesTitleElement.innerHTML = "Exemplos";
-    examples.appendChild(examplesTitleElement);   
+    examples.appendChild(examplesTitleElement);
     const examplesColumns = document.createElement("div");
     examplesColumns.classList.add("columns");
     examples.appendChild(examplesColumns);
