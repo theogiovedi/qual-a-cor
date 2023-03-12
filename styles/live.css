@@ -3,7 +3,7 @@
 
 canvas {
     display: block;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 select {
@@ -16,6 +16,6 @@ select {
     font-size: 22px;
     font-family: 'Fira Sans', sans-serif;
     width: calc(100% - 40px);
-    max-width: 250px;
+    max-width: 600px;
     outline: none;
 }
