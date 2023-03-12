@@ -99,11 +99,6 @@ h3 {
     margin-left: 10px;
 }
 
-#results .column {
-    width: 100%;
-    max-width: 300px;
-}
-
 h4 {
     color: var(--foreground-color);
     font-size: 25px;
@@ -111,8 +106,16 @@ h4 {
     margin-top: 40px;
 }
 
-label>h4 {
-    margin-top: 0;
+label {
+    display: block;
+    margin: 0 auto;
+    color: var(--foreground-color);
+    font-size: 20px;
+    text-align: center;
+}
+
+#contrast label, #examples label {
+    font-weight: bold;
 }
 
 .contrast-box {

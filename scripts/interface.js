@@ -618,10 +618,8 @@ export function createContrast(colorHex) {
     // Create foreground's label
 
     const fgLabelElement = document.createElement("label");
-    const fgLabelTitleElement = document.createElement("h4");
-    fgLabelTitleElement.innerHTML = "Cor do Texto";
+    fgLabelElement.innerHTML = "Cor do Texto";
     contrastFgElement.appendChild(fgLabelElement);
-    fgLabelElement.appendChild(fgLabelTitleElement);
 
     // Create foreground's color code input
 
@@ -649,10 +647,8 @@ export function createContrast(colorHex) {
     // Create background's label
 
     const bgLabelElement = document.createElement("label");
-    const bgLabelTitleElement = document.createElement("h4");
-    bgLabelTitleElement.innerHTML = "Cor de Fundo";
+    bgLabelElement.innerHTML = "Cor de Fundo";
     contrastBgElement.appendChild(bgLabelElement);
-    bgLabelElement.appendChild(bgLabelTitleElement);
 
     // Create background's color code input
 
@@ -933,10 +929,8 @@ export function createExamples(colorHex) {
     // Create Examples' Color 1 Label
 
     const examplesColor1Label = document.createElement("label");
-    const examplesColor1Title = document.createElement("h4");
-    examplesColor1Title.innerHTML = "Cor 1";
+    examplesColor1Label.innerHTML = "Cor 1";
     examplesColors1and2.appendChild(examplesColor1Label);
-    examplesColor1Label.appendChild(examplesColor1Title);
 
     // Create Examples' Color 1 color code input
 
@@ -958,10 +952,8 @@ export function createExamples(colorHex) {
     // Create Examples' Color 2 Label
 
     const examplesColor2Label = document.createElement("label");
-    const examplesColor2Title = document.createElement("h4");
-    examplesColor2Title.innerHTML = "Cor 2";
+    examplesColor2Label.innerHTML = "Cor 2";
     examplesColors1and2.appendChild(examplesColor2Label);
-    examplesColor2Label.appendChild(examplesColor2Title);
 
     // Create Examples' Color 2 color code input
 
@@ -989,10 +981,8 @@ export function createExamples(colorHex) {
     // Create Examples' Color 3 Label
 
     const examplesColor3Label = document.createElement("label");
-    const examplesColor3Title = document.createElement("h4");
-    examplesColor3Title.innerHTML = "Cor 3";
+    examplesColor3Label.innerHTML = "Cor 3";
     examplesColors3and4.appendChild(examplesColor3Label);
-    examplesColor3Label.appendChild(examplesColor3Title);
 
     // Create Examples' Color 3 color code input
 
@@ -1014,10 +1004,8 @@ export function createExamples(colorHex) {
     // Create Examples' Color 4 Label
 
     const examplesColor4Label = document.createElement("label");
-    const examplesColor4Title = document.createElement("h4");
-    examplesColor4Title.innerHTML = "Cor 4";
+    examplesColor4Label.innerHTML = "Cor 4";
     examplesColors3and4.appendChild(examplesColor4Label);
-    examplesColor4Label.appendChild(examplesColor4Title);
 
     // Create Examples' Color 4 color code input
 
@@ -1115,7 +1103,7 @@ export function createMainFooter() {
     const approxExplanationElement = document.createElement("p");
     approxExplanationElement.innerHTML = "[1] O nome da cor é apenas uma aproximação baseada na lista de cores nomeadas. Portanto, os resultados podem não ser compatíveis com a cor pesquisada";
     mainFooter.appendChild(approxExplanationElement);
-    
+
     const constrastExplanationElement = document.createElement("p");
     constrastExplanationElement.innerHTML = "[2] O Nível AA indica a conformidade mínima com a WCAG 2.1, com uma razão de contraste de 3:1 para textos grandes (mais de 18 pt em tamanho normal ou 14 pt em negrito) e 4.5:1 para textos pequenos (menores que 18 pt). No nível AAA, que indica a conformidade elevada com a WCAG 2.1, as razões de contraste sobem para 4.5:1 e 7:1, respectivamente.";
     mainFooter.appendChild(constrastExplanationElement);
