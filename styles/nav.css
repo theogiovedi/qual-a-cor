@@ -1,0 +1,22 @@
+@media only screen and (max-width: 760px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav img {
+        margin-bottom: 10px;
+    }
+
+    nav>ul {
+        font-size: 24px;
+    }
+    #toggle-dark-mode {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    nav>ul {
+        font-size: 18px;
+    }
+}

@@ -29,7 +29,7 @@ export function toggleDarkMode() {
         root.style.setProperty("--secondary-color", darkGray)
         darkMode.classList.toggle("bi-moon-stars-fill");
         darkMode.classList.toggle("bi-brightness-high-fill");
-        logo.src = "./images/navlogo-light.png";
+        logo.src = "./images/navlogo-light.svg";
 
         // SVG Elements
 
@@ -96,7 +96,7 @@ export function toggleDarkMode() {
         root.style.setProperty("--secondary-color", gray);
         darkMode.classList.toggle("bi-moon-stars-fill");
         darkMode.classList.toggle("bi-brightness-high-fill");
-        logo.src = "./images/navlogo-dark.png";
+        logo.src = "./images/navlogo-dark.svg";
 
         // SVG Elements
 
@@ -390,7 +390,7 @@ export function createResults(colorHex) {
     results.appendChild(colorNameElement);
     if (colorHex.toUpperCase() != closestColor.toUpperCase()) {
         const approxElement = document.createElement("span");
-        approxElement.innerHTML = "aprox.";
+        approxElement.innerHTML = 'aprox.<sup>[1]</sup>';
         approxElement.classList.add("approx");
         colorNameElement.appendChild(approxElement);
     }
@@ -409,7 +409,7 @@ export function createResults(colorHex) {
     colorHexElement.append(colorHexNameElement);
 
     const colorProtElement = document.createElement("p");
-    colorProtElement.innerHTML = "Protanomalia: ";
+    colorProtElement.innerHTML = "Protanopia: ";
     results.appendChild(colorProtElement);
 
     const colorProtSquare = document.createElement("div");
@@ -422,7 +422,7 @@ export function createResults(colorHex) {
     colorProtElement.append(colorProtHexElement);
 
     const colorDeutElement = document.createElement("p");
-    colorDeutElement.innerHTML = "Deuteranomalia: ";
+    colorDeutElement.innerHTML = "Deuteranopia: ";
     results.appendChild(colorDeutElement);
 
     const colorDeutSquare = document.createElement("div");
@@ -435,7 +435,7 @@ export function createResults(colorHex) {
     colorDeutElement.append(colorDeutHexElement);
 
     const colorTritElement = document.createElement("p");
-    colorTritElement.innerHTML = "Tritanomalia: ";
+    colorTritElement.innerHTML = "Tritanopia: ";
     results.appendChild(colorTritElement);
 
     const colorTritSquare = document.createElement("div");
@@ -547,9 +547,9 @@ export function createContrast(colorHex) {
     const titleNormalContrastBigElement = document.createElement("p");
     titleNormalContrastBigElement.id = "normal-contrast-big";
     if (contrastNormal >= 4.5) {
-        titleNormalContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA";
+        titleNormalContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
     } else if (contrastNormal >= 3) {
-        titleNormalContrastBigElement.innerHTML = "Para fontes grandes: Nível AA";
+        titleNormalContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
     } else {
         titleNormalContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
@@ -557,16 +557,16 @@ export function createContrast(colorHex) {
     const titleNormalContrastSmallElement = document.createElement("p");
     titleNormalContrastSmallElement.id = "normal-contrast-small";
     if (contrastNormal >= 7) {
-        titleNormalContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA";
+        titleNormalContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
     } else if (contrastNormal >= 4.5) {
-        titleNormalContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA";
+        titleNormalContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
     } else {
         titleNormalContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
     contrast.appendChild(titleNormalContrastSmallElement);
 
     const titleProtanomalyContrastElement = document.createElement("h4");
-    titleProtanomalyContrastElement.innerHTML = "Protanomalia";
+    titleProtanomalyContrastElement.innerHTML = "Protanopia";
     contrast.appendChild(titleProtanomalyContrastElement);
     const protanomalyContrastElement = document.createElement("div");
     protanomalyContrastElement.classList.add("contrast-box");
@@ -584,9 +584,9 @@ export function createContrast(colorHex) {
     const titleProtanomalyContrastBigElement = document.createElement("p");
     titleProtanomalyContrastBigElement.id = "prot-contrast-big";
     if (contrastProtanomaly >= 4.5) {
-        titleProtanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA";
+        titleProtanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
     } else if (contrastProtanomaly >= 3) {
-        titleProtanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA";
+        titleProtanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
     } else {
         titleProtanomalyContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
@@ -594,16 +594,16 @@ export function createContrast(colorHex) {
     const titleProtanomalyContrastSmallElement = document.createElement("p");
     titleProtanomalyContrastSmallElement.id = "prot-contrast-small";
     if (contrastProtanomaly >= 7) {
-        titleProtanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA";
+        titleProtanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
     } else if (contrastProtanomaly >= 4.5) {
-        titleProtanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA";
+        titleProtanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
     } else {
         titleProtanomalyContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
     contrast.appendChild(titleProtanomalyContrastSmallElement);
 
     const titleDeuteranomalyContrastElement = document.createElement("h4");
-    titleDeuteranomalyContrastElement.innerHTML = "Deuteranomalia";
+    titleDeuteranomalyContrastElement.innerHTML = "Deuteranopia";
     contrast.appendChild(titleDeuteranomalyContrastElement);
     const deuteranomalyContrastElement = document.createElement("div");
     deuteranomalyContrastElement.classList.add("contrast-box");
@@ -621,9 +621,9 @@ export function createContrast(colorHex) {
     const titleDeuteranomalyContrastBigElement = document.createElement("p");
     titleDeuteranomalyContrastBigElement.id = "deut-contrast-big";
     if (contrastDeuteranomaly >= 4.5) {
-        titleDeuteranomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA";
+        titleDeuteranomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
     } else if (contrastDeuteranomaly >= 3) {
-        titleDeuteranomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA";
+        titleDeuteranomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
     } else {
         titleDeuteranomalyContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
@@ -631,16 +631,16 @@ export function createContrast(colorHex) {
     const titleDeuteranomalyContrastSmallElement = document.createElement("p");
     titleDeuteranomalyContrastSmallElement.id = "deut-contrast-small";
     if (contrastDeuteranomaly >= 7) {
-        titleDeuteranomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA";
+        titleDeuteranomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
     } else if (contrastDeuteranomaly >= 4.5) {
-        titleDeuteranomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA";
+        titleDeuteranomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
     } else {
         titleDeuteranomalyContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
     contrast.appendChild(titleDeuteranomalyContrastSmallElement);
 
     const titleTritanomalyContrastElement = document.createElement("h4");
-    titleTritanomalyContrastElement.innerHTML = "Tritanomalia";
+    titleTritanomalyContrastElement.innerHTML = "Tritanopia";
     contrast.appendChild(titleTritanomalyContrastElement);
     const tritanomalyContrastElement = document.createElement("div");
     tritanomalyContrastElement.classList.add("contrast-box");
@@ -658,9 +658,9 @@ export function createContrast(colorHex) {
     const titleTritanomalyContrastBigElement = document.createElement("p");
     titleTritanomalyContrastBigElement.id = "trit-contrast-big";
     if (contrastTritanomaly >= 4.5) {
-        titleTritanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA";
+        titleTritanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
     } else if (contrastTritanomaly >= 3) {
-        titleTritanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA";
+        titleTritanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
     } else {
         titleTritanomalyContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
@@ -668,9 +668,9 @@ export function createContrast(colorHex) {
     const titleTritanomalyContrastSmallElement = document.createElement("p");
     titleTritanomalyContrastSmallElement.id = "trit-contrast-small";
     if (contrastTritanomaly >= 7) {
-        titleTritanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA";
+        titleTritanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
     } else if (contrastTritanomaly >= 4.5) {
-        titleTritanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA";
+        titleTritanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
     } else {
         titleTritanomalyContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
@@ -792,19 +792,19 @@ export function createExamples(colorHex) {
     createSVG("normal", color1, color2, color3, color4);
 
     const titleProtGraphic = document.createElement("h4");
-    titleProtGraphic.innerHTML = "Protanomalia";
+    titleProtGraphic.innerHTML = "Protanopia";
     examples.appendChild(titleProtGraphic);
 
     createSVG("prot", normalToProtanomaly(color1), normalToProtanomaly(color2), normalToProtanomaly(color3), normalToProtanomaly(color4));
 
     const titleDeutGraphic = document.createElement("h4");
-    titleDeutGraphic.innerHTML = "Deuteranomalia";
+    titleDeutGraphic.innerHTML = "Deuteranopia";
     examples.appendChild(titleDeutGraphic);
 
     createSVG("deut", normalToDeuteranomaly(color1), normalToDeuteranomaly(color2), normalToDeuteranomaly(color3), normalToDeuteranomaly(color4));
 
     const titleTritGraphic = document.createElement("h4");
-    titleTritGraphic.innerHTML = "Tritanomalia";
+    titleTritGraphic.innerHTML = "Tritanopia";
     examples.appendChild(titleTritGraphic);
 
     createSVG("trit", normalToTritanomaly(color1), normalToTritanomaly(color2), normalToTritanomaly(color3), normalToTritanomaly(color4));
@@ -823,7 +823,10 @@ export function createLearnMore(colorName) {
 export function createMainFooter() {
     const mainFooter = document.getElementById("main-footer");
     mainFooter.innerHTML = "";
+    const approxExplanationElement = document.createElement("p");
+    approxExplanationElement.innerHTML = "[1] O nome da cor é apenas uma aproximação baseada na lista de cores nomeadas. Portanto, os resultados podem não ser compatíveis com a cor pesquisada";
+    mainFooter.appendChild(approxExplanationElement);
     const constrastExplanationElement = document.createElement("p");
-    constrastExplanationElement.innerHTML = "O Nível AA indica a conformidade mínima com a WCAG 2.1, com uma razão de contraste de 3:1 para textos grandes (mais de 18 pt em tamanho normal ou 14 pt em negrito) e 4.5:1 para textos pequenos (menores que 18 pt). No nível AAA, que indica a conformidade elevada com a WCAG 2.1, as razões de contraste sobem para 4.5:1 e 7:1, respectivamente.";
+    constrastExplanationElement.innerHTML = "[2] O Nível AA indica a conformidade mínima com a WCAG 2.1, com uma razão de contraste de 3:1 para textos grandes (mais de 18 pt em tamanho normal ou 14 pt em negrito) e 4.5:1 para textos pequenos (menores que 18 pt). No nível AAA, que indica a conformidade elevada com a WCAG 2.1, as razões de contraste sobem para 4.5:1 e 7:1, respectivamente.";
     mainFooter.appendChild(constrastExplanationElement);
 }

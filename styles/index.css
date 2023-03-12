@@ -1,4 +1,5 @@
 @import url('./general.css');
+@import url('./nav.css');
 
 input[type="text"] {
     outline: none;
@@ -165,18 +166,6 @@ svg {
 }
 
 @media only screen and (max-width: 760px) {
-    nav {
-        flex-direction: column;
-    }
-
-    nav img {
-        margin-bottom: 10px;
-    }
-
-    nav>ul {
-        font-size: 24px;
-    }
-
     #main-footer p {
         width: calc(100% - 40px);
     }

@@ -36,7 +36,7 @@ nav>ul {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 250px;
+    max-width: 350px;
     font-size: 24px;
 }
 
@@ -60,7 +60,7 @@ h1 {
     color: var(--foreground-color);
     font-size: 64px;
     text-align: center;
-    margin: 30px 0;
+    margin: 50px 0;
 }
 
 p {
@@ -78,4 +78,17 @@ p {
     text-align: left;
     margin: 20px auto;
     line-height: 20px;
+    word-wrap: break-word;
+}
+
+sup {
+    color: var(--secondary-color);
+    margin-left: 5px;
+}
+
+@media only screen and (max-width: 350px) {
+    h1 {
+        font-size: 42px;
+        margin: 30px 0;
+    }
 }

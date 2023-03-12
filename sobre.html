@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/text.css">
-    <title>Qual a Cor? | Home</title>
+    <title>Qual a Cor? | Sobre</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="index.html"><img src="./images/navlogo-light.png" alt="Logo do Qual a Cor?" id="navlogo"></a>
+            <a href="index.html"><img src="./images/navlogo-light.svg" alt="Logo do Qual a Cor?" id="navlogo"></a>
             <ul>
+                <li id="live"><a href="./ao-vivo.html">Ao Vivo</a></li>
                 <li><a href="./dicas.html">Dicas</a></li>
                 <li><a href="./sobre.html">Sobre</a></li>
                 <li><i class="bi bi-moon-stars-fill" id="toggle-dark-mode"></i></li>
@@ -40,7 +41,7 @@
                     href="https://www.inf.ufrgs.br/~oliveira/pubs_files/CVD_Simulation/CVD_Simulation.html">A
                     Physiologically-based Model for Simulation of Color Vision Deficiency</a>", escrito por Gustavo
                 Machado, Manuel Oliveira e Leandro Fernandes. A implementação foi feita usando como base as matrizes
-                pré-computadas de protanomalia, deuteranomalia e tritanomalia em suas severidades mais elevadas,
+                pré-computadas de protanopia, deuteranopia e tritanopia em suas severidades mais elevadas,
                 oferecidas pelos autores.</p>
             <p>O cálculo de contraste foi feito utilizando as informações e equações presentes na W3C Wiki e nas
                 Diretrizes de Acessibilidade para Conteúdo Web da W3C em sua versão 2.1</p>
@@ -56,6 +57,7 @@
             <p>Mesmo que seu autor não tenha daltonismo, o site nasceu com o intuito de tornar a web mais acessível para
                 350 milhões de pessoas mundo afora, principalmente aquelas que falam português, e permitir que a criação
                 de produtos digitais com acessibilidade para essa população seja mais fácil e rápida.</p>
+            <p><strong>Tecnologias utilizadas:</strong> <a href="https://https://icons.getbootstrap.com/">Bootstrap Icons</a> (<a href="https://github.com/twbs/icons/blob/main/LICENSE.md">MIT License</a>), <a href="https://fonts.google.com/specimen/Fira+Sans">Fira Sans</a> (<a href="https://github.com/mozilla/Fira/blob/master/LICENSE">OFL 1.1</a>), <a href="https://p5js.org/">p5.js</a> (<a href="https://github.com/processing/p5.js/blob/main/license.txt">LGPL 2.1</a>)</p>
         </article>
     </main>
     <footer>
@@ -92,6 +94,7 @@
                     href="https://github.com/theogiovedi" target="_blank">Théo Giovedi</a></p>
         </div>
     </footer>
+    <script src="./scripts/text.js" type="module"></script>
 </body>
 
 </html>

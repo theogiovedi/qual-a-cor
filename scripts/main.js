@@ -37,4 +37,6 @@ function showResults() {
 }
 
 darkMode.addEventListener("click", toggleDarkMode);
-resultsButton.addEventListener("click", showResults);
+if (resultsButton) {
+    resultsButton.addEventListener("click", showResults)
+}
