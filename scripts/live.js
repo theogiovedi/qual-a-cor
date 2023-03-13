@@ -64,27 +64,47 @@ function normalToTritanomaly(r, g, b) {
 }
 
 var cam, canvasWidth, canvasHeight;
+const camDiv = document.getElementById("cam");
+const errorMessage = document.createElement("p");
+var hasVideoInput = false;
 
 function setup() {
+    
+    navigator.mediaDevices.enumerateDevices().then((devices) => {
+        devices.forEach((device) => {
+            if (device.kind == "videoinput") {
+                hasVideoInput = true;
+            }
+        })
+    }).catch((e) => {
+        errorMessage.innerHTML = "Erro: Não foi possível verificar se seu navegador possui uma câmera";
+        camDiv.appendChild(errorMessage);
+        return;
+    })
+
+    if (!hasVideoInput) {
+        errorMessage.innerHTML = "Erro: Seu navegador não possui uma câmera";
+        camDiv.appendChild(errorMessage);
+        return;
+    }
+
     cam = createCapture(VIDEO);
     cam.hide();
     canvasWidth = windowWidth - 40;
     if (canvasWidth > 600) {
         canvasWidth = 600;
     }
-    navigator.mediaDevices.getUserMedia({ video: true }).then((display) => {
-        let track = display.getVideoTracks()[0];
-        let settings = track.getSettings();
-        canvasHeight = canvasWidth * settings.height / settings.width;
-        canvas = createCanvas(canvasWidth, canvasHeight);
-        canvas.parent("cam");
-    });
-    canvasHeight = height;
-
+    canvasHeight = canvasWidth * 3 / 4;
+    canvas = createCanvas(canvasWidth, canvasHeight);
+    canvas.parent("cam");
 }
 
 function draw() {
 
+    if (!hasVideoInput) {
+        return;
+    }
+    
     camFrame = cam.get();
 
     camFrame.loadPixels();
