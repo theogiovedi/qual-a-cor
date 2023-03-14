@@ -197,3 +197,5 @@ function draw() {
     camFrame.updatePixels();
     image(camFrame, 0, 0, canvasWidth, canvasHeight);
 }
+
+window.onresize = setup;
