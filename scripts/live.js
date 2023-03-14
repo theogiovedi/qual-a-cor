@@ -92,7 +92,12 @@ function setup() {
             if (canvasWidth > 600) {
                 canvasWidth = 600;
             }
-            canvasHeight = canvasWidth * 3 / 4;
+            if (windowWidth < windowHeight) {
+                canvasHeight = canvasWidth * 4 / 3;
+            }
+            else {
+                canvasHeight = canvasWidth * 3 / 4;
+            }
             canvas = createCanvas(canvasWidth, canvasHeight);
             canvas.parent("cam");
         }
