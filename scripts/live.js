@@ -45,6 +45,20 @@ function setup() {
 
 }
 
+function resizeCamera() {
+    canvasWidth = windowWidth - 40;
+    if (canvasWidth > 600) {
+        canvasWidth = 600;
+    }
+    if (windowWidth < windowHeight) {
+        canvasHeight = canvasWidth * 4 / 3;
+    }
+    else {
+        canvasHeight = canvasWidth * 3 / 4;
+    }
+    resizeCanvas(canvasWidth, canvasHeight)
+}
+
 function draw() {
 
     if (!hasVideoInput) {
@@ -198,4 +212,6 @@ function draw() {
     image(camFrame, 0, 0, canvasWidth, canvasHeight);
 }
 
-window.onresize = setup;
+let viewport = window.matchMedia("(orientation: portrait)")
+
+viewport.addEventListener("change", resizeCamera);
