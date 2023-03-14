@@ -23,7 +23,6 @@ function setup() {
         } else {
             cam = createCapture({
                 video: {
-                    frameRate: { min: 10, ideal: 12 },
                     facingMode: { ideal: "environment" },
                 }
             });
