@@ -86,7 +86,9 @@ function setup() {
             camDiv.appendChild(errorMessage);
             return;
         } else {
-            cam = createCapture(VIDEO);
+            cam = createCapture({
+                facingMode: { ideal: "environment" },
+            });
             cam.hide();
             canvasWidth = windowWidth - 40;
             if (canvasWidth > 600) {
