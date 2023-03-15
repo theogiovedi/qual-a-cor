@@ -18,4 +18,5 @@ select {
     width: calc(100% - 40px);
     max-width: 600px;
     outline: none;
+    border-radius: 0;
 }

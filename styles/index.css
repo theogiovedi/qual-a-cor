@@ -13,6 +13,7 @@ input[type="text"] {
     text-align: center;
     border: 3px solid var(--foreground-color);
     width: 250px;
+    border-radius: 0;
 }
 
 input[type="color"] {
@@ -23,6 +24,7 @@ input[type="color"] {
     height: 64px;
     padding: 5px;
     background-color: var(--background-color);
+    border-radius: 0;
 }
 
 button {
@@ -114,7 +116,8 @@ label {
     text-align: center;
 }
 
-#contrast label, #examples label {
+#contrast label,
+#examples label {
     font-weight: bold;
 }
 
