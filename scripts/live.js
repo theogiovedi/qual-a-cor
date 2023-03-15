@@ -46,10 +46,17 @@ function setup() {
 }
 
 function resizeCamera() {
-    tmp = canvasHeight;
-    canvasHeight = canvasWidth;
-    canvasWidth = tmp;
-    resizeCanvas(canvasWidth, canvasHeight)
+    w = windowWidth - 40;
+    if (w > 600) {
+        w = 600;
+    }
+    
+    if (windowWidth < windowHeight) {
+        h = w * 4 / 3;
+    } else  {
+        h = w * 3 / 4;
+    }
+    resizeCanvas(w, h)
 }
 
 function draw() {
