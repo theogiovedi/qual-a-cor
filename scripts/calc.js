@@ -46,42 +46,42 @@ function getColorDifference(rgb, rgb2) {
     return Math.sqrt(Math.pow(red2 - red, 2) + Math.pow(green2 - green, 2) + Math.pow(blue2 - blue, 2))
 }
 
-export function normalToProtanomaly(rgb) {
+export function normalToProt(rgb) {
     const red = parseInt(rgb[1] + rgb[2], 16);
     const green = parseInt(rgb[3] + rgb[4], 16);
     const blue = parseInt(rgb[5] + rgb[6], 16);
-    const protanomalyMatrix = [
+    const protMatrix = [
         [0.152286, 1.052583, -0.204868],
         [0.114503, 0.786281, 0.099216],
         [-0.003882, -0.048116, 1.051998]
     ]
-    const simulatedRgb = multiplyMatrix(red, green, blue, protanomalyMatrix);
+    const simulatedRgb = multiplyMatrix(red, green, blue, protMatrix);
     return "#" + simulatedRgb[0].toString(16).padStart(2, "0") + simulatedRgb[1].toString(16).padStart(2, "0") + simulatedRgb[2].toString(16).padStart(2, "0")
 }
 
-export function normalToDeuteranomaly(rgb) {
+export function normalToDeut(rgb) {
     const red = parseInt(rgb[1] + rgb[2], 16);
     const green = parseInt(rgb[3] + rgb[4], 16);
     const blue = parseInt(rgb[5] + rgb[6], 16);
-    const deuteranomalyMatrix = [
+    const deutMatrix = [
         [0.367322, 0.860646, -0.227968],
         [0.280085, 0.672501, 0.047413],
         [-0.011820, 0.042940, 0.968881]
     ]
-    const simulatedRgb = multiplyMatrix(red, green, blue, deuteranomalyMatrix);
+    const simulatedRgb = multiplyMatrix(red, green, blue, deutMatrix);
     return "#" + simulatedRgb[0].toString(16).padStart(2, "0") + simulatedRgb[1].toString(16).padStart(2, "0") + simulatedRgb[2].toString(16).padStart(2, "0")
 }
 
-export function normalToTritanomaly(rgb) {
+export function normalToTrit(rgb) {
     const red = parseInt(rgb[1] + rgb[2], 16);
     const green = parseInt(rgb[3] + rgb[4], 16);
     const blue = parseInt(rgb[5] + rgb[6], 16);
-    const tritanomalyMatrix = [
+    const tritMatrix = [
         [1.255528, -0.076749, -0.178779],
         [-0.078411, 0.930809, 0.147602],
         [0.004733, 0.691367, 0.303900]
     ]
-    const simulatedRgb = multiplyMatrix(red, green, blue, tritanomalyMatrix);
+    const simulatedRgb = multiplyMatrix(red, green, blue, tritMatrix);
     return "#" + simulatedRgb[0].toString(16).padStart(2, "0") + simulatedRgb[1].toString(16).padStart(2, "0") + simulatedRgb[2].toString(16).padStart(2, "0")
 }
 

@@ -1,6 +1,6 @@
 import { getColorName } from './colors.js'
 import { darkMode } from './main.js';
-import { normalToProtanomaly, normalToDeuteranomaly, normalToTritanomaly, getRelativeLuminance, getContrast, getClosestColor } from './calc.js'
+import { normalToProt, normalToDeut, normalToTrit, getRelativeLuminance, getContrast, getClosestColor } from './calc.js'
 import { createSVG } from './svg.js';
 
 export function toggleDarkMode() {
@@ -97,7 +97,7 @@ export function toggleDarkMode() {
         }
 
 
-    // To Dark Mode
+        // To Dark Mode
 
     } else {
         root.style.setProperty("--foreground-color", white);
@@ -216,15 +216,15 @@ export function updateContrastValues() {
 
     // Simulate foreground colors
 
-    const fgProt = normalToProtanomaly(fg);
-    const fgDeut = normalToDeuteranomaly(fg);
-    const fgTrit = normalToTritanomaly(fg);
+    const fgProt = normalToProt(fg);
+    const fgDeut = normalToDeut(fg);
+    const fgTrit = normalToTrit(fg);
 
     // Simulate background colors
 
-    const bgProt = normalToProtanomaly(bg);
-    const bgDeut = normalToDeuteranomaly(bg);
-    const bgTrit = normalToTritanomaly(bg);
+    const bgProt = normalToProt(bg);
+    const bgDeut = normalToDeut(bg);
+    const bgTrit = normalToTrit(bg);
 
     // Update background colors
 
@@ -366,7 +366,7 @@ export function updateExamplesValues() {
     const line4Deut = svgDeut.getElementById("line4-deut");
 
     // Get SVG Lines for Trit Graphic
-    
+
     const line1Trit = svgTrit.getElementById("line1-trit");
     const line2Trit = svgTrit.getElementById("line2-trit");
     const line3Trit = svgTrit.getElementById("line3-trit");
@@ -380,7 +380,7 @@ export function updateExamplesValues() {
     const rect4Normal = svgNormal.getElementById("rect4-normal");
 
     // Get Label's Color Rectangle for Prot
-    
+
     const rect1Prot = svgProt.getElementById("rect1-prot");
     const rect2Prot = svgProt.getElementById("rect2-prot");
     const rect3Prot = svgProt.getElementById("rect3-prot");
@@ -408,25 +408,25 @@ export function updateExamplesValues() {
     line4Normal.setAttribute("stroke", color4);
 
     // Set Color for Lines in Prot Graphic
-    
-    line1Prot.setAttribute("stroke", normalToProtanomaly(color1));
-    line2Prot.setAttribute("stroke", normalToProtanomaly(color2));
-    line3Prot.setAttribute("stroke", normalToProtanomaly(color3));
-    line4Prot.setAttribute("stroke", normalToProtanomaly(color4));
+
+    line1Prot.setAttribute("stroke", normalToProt(color1));
+    line2Prot.setAttribute("stroke", normalToProt(color2));
+    line3Prot.setAttribute("stroke", normalToProt(color3));
+    line4Prot.setAttribute("stroke", normalToProt(color4));
 
     // Set Color for Lines in Deut Graphic
 
-    line1Deut.setAttribute("stroke", normalToDeuteranomaly(color1));
-    line2Deut.setAttribute("stroke", normalToDeuteranomaly(color2));
-    line3Deut.setAttribute("stroke", normalToDeuteranomaly(color3));
-    line4Deut.setAttribute("stroke", normalToDeuteranomaly(color4));
+    line1Deut.setAttribute("stroke", normalToDeut(color1));
+    line2Deut.setAttribute("stroke", normalToDeut(color2));
+    line3Deut.setAttribute("stroke", normalToDeut(color3));
+    line4Deut.setAttribute("stroke", normalToDeut(color4));
 
     // Set Color for Lines in Trit Graphic
 
-    line1Trit.setAttribute("stroke", normalToTritanomaly(color1));
-    line2Trit.setAttribute("stroke", normalToTritanomaly(color2));
-    line3Trit.setAttribute("stroke", normalToTritanomaly(color3));
-    line4Trit.setAttribute("stroke", normalToTritanomaly(color4));
+    line1Trit.setAttribute("stroke", normalToTrit(color1));
+    line2Trit.setAttribute("stroke", normalToTrit(color2));
+    line3Trit.setAttribute("stroke", normalToTrit(color3));
+    line4Trit.setAttribute("stroke", normalToTrit(color4));
 
     // Set Color for Label's Color Rectangle in Normal Graphic
 
@@ -436,25 +436,25 @@ export function updateExamplesValues() {
     rect4Normal.setAttribute("fill", color4);
 
     // Set Color for Label's Color Rectangle in Prot Graphic
-    
-    rect1Prot.setAttribute("fill", normalToProtanomaly(color1));
-    rect2Prot.setAttribute("fill", normalToProtanomaly(color2));
-    rect3Prot.setAttribute("fill", normalToProtanomaly(color3));
-    rect4Prot.setAttribute("fill", normalToProtanomaly(color4));
+
+    rect1Prot.setAttribute("fill", normalToProt(color1));
+    rect2Prot.setAttribute("fill", normalToProt(color2));
+    rect3Prot.setAttribute("fill", normalToProt(color3));
+    rect4Prot.setAttribute("fill", normalToProt(color4));
 
     // Set Color for Label's Color Rectangle in Deut Graphic
-    
-    rect1Deut.setAttribute("fill", normalToDeuteranomaly(color1));
-    rect2Deut.setAttribute("fill", normalToDeuteranomaly(color2));
-    rect3Deut.setAttribute("fill", normalToDeuteranomaly(color3));
-    rect4Deut.setAttribute("fill", normalToDeuteranomaly(color4));
+
+    rect1Deut.setAttribute("fill", normalToDeut(color1));
+    rect2Deut.setAttribute("fill", normalToDeut(color2));
+    rect3Deut.setAttribute("fill", normalToDeut(color3));
+    rect4Deut.setAttribute("fill", normalToDeut(color4));
 
     // Set Color for Label's Color Rectangle in Trit Graphic
 
-    rect1Trit.setAttribute("fill", normalToTritanomaly(color1));
-    rect2Trit.setAttribute("fill", normalToTritanomaly(color2));
-    rect3Trit.setAttribute("fill", normalToTritanomaly(color3));
-    rect4Trit.setAttribute("fill", normalToTritanomaly(color4));
+    rect1Trit.setAttribute("fill", normalToTrit(color1));
+    rect2Trit.setAttribute("fill", normalToTrit(color2));
+    rect3Trit.setAttribute("fill", normalToTrit(color3));
+    rect4Trit.setAttribute("fill", normalToTrit(color4));
 }
 
 export function createResults(colorHex) {
@@ -471,9 +471,9 @@ export function createResults(colorHex) {
 
     const closestColor = getClosestColor(colorHex);
     const colorName = getColorName(closestColor);
-    const colorProt = normalToProtanomaly(colorHex);
-    const colorDeut = normalToDeuteranomaly(colorHex);
-    const colorTrit = normalToTritanomaly(colorHex);
+    const colorProt = normalToProt(colorHex);
+    const colorDeut = normalToDeut(colorHex);
+    const colorTrit = normalToTrit(colorHex);
 
     // Create Title
 
@@ -497,7 +497,7 @@ export function createResults(colorHex) {
     }
 
     // Create Normal:
-    
+
     const colorHexElement = document.createElement("p");
     colorHexElement.innerHTML = "Normal: ";
     results.appendChild(colorHexElement);
@@ -548,7 +548,7 @@ export function createResults(colorHex) {
     colorDeutElement.appendChild(colorDeutSquare);
 
     // Create Deut:'s color code
-    
+
     const colorDeutHexElement = document.createElement("code");
     colorDeutHexElement.innerHTML = colorDeut;
     colorDeutElement.append(colorDeutHexElement);
@@ -567,7 +567,7 @@ export function createResults(colorHex) {
     colorTritElement.appendChild(colorTritSquare);
 
     // Create Trit:'s color code
-    
+
     const colorTritHexElement = document.createElement("code");
     colorTritHexElement.innerHTML = colorTrit;
     colorTritElement.append(colorTritHexElement);
@@ -586,9 +586,9 @@ export function createContrast(colorHex) {
     // Set the variables
 
     const relativeLuminance = getRelativeLuminance(colorHex);
-    const colorProt = normalToProtanomaly(colorHex);
-    const colorDeut = normalToDeuteranomaly(colorHex);
-    const colorTrit = normalToTritanomaly(colorHex);
+    const colorProt = normalToProt(colorHex);
+    const colorDeut = normalToDeut(colorHex);
+    const colorTrit = normalToTrit(colorHex);
     let bgColor = colorHex;
     let fgColor;
     if (relativeLuminance < 0.5) {
@@ -708,7 +708,7 @@ export function createContrast(colorHex) {
     titleNormalContrastRatioElement.innerHTML = "Razão de Contraste: " + contrastNormal;
     titleNormalContrastRatioElement.id = "normal-contrast-ratio";
     contrast.appendChild(titleNormalContrastRatioElement);
-    
+
     // Create Normal Contrast's information for big texts
 
     const titleNormalContrastBigElement = document.createElement("p");
@@ -721,9 +721,9 @@ export function createContrast(colorHex) {
         titleNormalContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
     contrast.appendChild(titleNormalContrastBigElement);
-    
+
     // Create Normal Contrast's information for small texts
-    
+
     const titleNormalContrastSmallElement = document.createElement("p");
     titleNormalContrastSmallElement.id = "normal-contrast-small";
     if (contrastNormal >= 7) {
@@ -739,160 +739,160 @@ export function createContrast(colorHex) {
 
     // Create Prot Contrast's title
 
-    const titleProtanomalyContrastElement = document.createElement("h4");
-    titleProtanomalyContrastElement.innerHTML = "Protanopia";
-    contrast.appendChild(titleProtanomalyContrastElement);
+    const titleProtContrastElement = document.createElement("h4");
+    titleProtContrastElement.innerHTML = "Protanopia";
+    contrast.appendChild(titleProtContrastElement);
 
     // Create Prot Contrast's contrast box
 
-    const protanomalyContrastElement = document.createElement("div");
-    protanomalyContrastElement.classList.add("contrast-box");
-    protanomalyContrastElement.id = "prot-contrast-box";
-    protanomalyContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
-    protanomalyContrastElement.appendChild(textContrastElement.cloneNode(true));
-    protanomalyContrastElement.style.color = normalToDeuteranomaly(fgColor);
-    protanomalyContrastElement.style.backgroundColor = colorProt;
-    contrast.appendChild(protanomalyContrastElement);
+    const protContrastElement = document.createElement("div");
+    protContrastElement.classList.add("contrast-box");
+    protContrastElement.id = "prot-contrast-box";
+    protContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
+    protContrastElement.appendChild(textContrastElement.cloneNode(true));
+    protContrastElement.style.color = normalToDeut(fgColor);
+    protContrastElement.style.backgroundColor = colorProt;
+    contrast.appendChild(protContrastElement);
 
     // Create Prot Contrast's information
 
-    const titleProtanomalyContrastRatioElement = document.createElement("p");
-    const contrastProtanomaly = getContrast(fgColor, colorProt);
-    titleProtanomalyContrastRatioElement.innerHTML = "Razão de Contraste: " + contrastProtanomaly;
-    titleProtanomalyContrastRatioElement.id = "prot-contrast-ratio";
-    contrast.appendChild(titleProtanomalyContrastRatioElement);
+    const titleProtContrastRatioElement = document.createElement("p");
+    const contrastProt = getContrast(fgColor, colorProt);
+    titleProtContrastRatioElement.innerHTML = "Razão de Contraste: " + contrastProt;
+    titleProtContrastRatioElement.id = "prot-contrast-ratio";
+    contrast.appendChild(titleProtContrastRatioElement);
 
     // Create Prot Contrast's information for big texts
 
-    const titleProtanomalyContrastBigElement = document.createElement("p");
-    titleProtanomalyContrastBigElement.id = "prot-contrast-big";
-    if (contrastProtanomaly >= 4.5) {
-        titleProtanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
-    } else if (contrastProtanomaly >= 3) {
-        titleProtanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
+    const titleProtContrastBigElement = document.createElement("p");
+    titleProtContrastBigElement.id = "prot-contrast-big";
+    if (contrastProt >= 4.5) {
+        titleProtContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
+    } else if (contrastProt >= 3) {
+        titleProtContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
     } else {
-        titleProtanomalyContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
+        titleProtContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
-    contrast.appendChild(titleProtanomalyContrastBigElement);
+    contrast.appendChild(titleProtContrastBigElement);
 
     // Create Prot Contrast's information for small texts
 
-    const titleProtanomalyContrastSmallElement = document.createElement("p");
-    titleProtanomalyContrastSmallElement.id = "prot-contrast-small";
-    if (contrastProtanomaly >= 7) {
-        titleProtanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
-    } else if (contrastProtanomaly >= 4.5) {
-        titleProtanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
+    const titleProtContrastSmallElement = document.createElement("p");
+    titleProtContrastSmallElement.id = "prot-contrast-small";
+    if (contrastProt >= 7) {
+        titleProtContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
+    } else if (contrastProt >= 4.5) {
+        titleProtContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
     } else {
-        titleProtanomalyContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
+        titleProtContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
-    contrast.appendChild(titleProtanomalyContrastSmallElement);
+    contrast.appendChild(titleProtContrastSmallElement);
 
     // Create Deut Contrast
 
     // Create Deut Contrast's title
 
-    const titleDeuteranomalyContrastElement = document.createElement("h4");
-    titleDeuteranomalyContrastElement.innerHTML = "Deuteranopia";
-    contrast.appendChild(titleDeuteranomalyContrastElement);
+    const titleDeutContrastElement = document.createElement("h4");
+    titleDeutContrastElement.innerHTML = "Deuteranopia";
+    contrast.appendChild(titleDeutContrastElement);
 
     // Create Deut Contrast's contrast box
 
-    const deuteranomalyContrastElement = document.createElement("div");
-    deuteranomalyContrastElement.classList.add("contrast-box");
-    deuteranomalyContrastElement.id = "deut-contrast-box";
-    deuteranomalyContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
-    deuteranomalyContrastElement.appendChild(textContrastElement.cloneNode(true));
-    deuteranomalyContrastElement.style.color = normalToDeuteranomaly(fgColor);
-    deuteranomalyContrastElement.style.backgroundColor = colorDeut;
-    contrast.appendChild(deuteranomalyContrastElement);
+    const deutContrastElement = document.createElement("div");
+    deutContrastElement.classList.add("contrast-box");
+    deutContrastElement.id = "deut-contrast-box";
+    deutContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
+    deutContrastElement.appendChild(textContrastElement.cloneNode(true));
+    deutContrastElement.style.color = normalToDeut(fgColor);
+    deutContrastElement.style.backgroundColor = colorDeut;
+    contrast.appendChild(deutContrastElement);
 
     // Create Deut Contrast's information
 
-    const titleDeuteranomalyContrastRatioElement = document.createElement("p");
-    const contrastDeuteranomaly = getContrast(fgColor, colorDeut);
-    titleDeuteranomalyContrastRatioElement.innerHTML = "Razão de Contraste: " + contrastDeuteranomaly;
-    titleDeuteranomalyContrastRatioElement.id = "deut-contrast-ratio";
-    contrast.appendChild(titleDeuteranomalyContrastRatioElement);
+    const titleDeutContrastRatioElement = document.createElement("p");
+    const contrastDeut = getContrast(fgColor, colorDeut);
+    titleDeutContrastRatioElement.innerHTML = "Razão de Contraste: " + contrastDeut;
+    titleDeutContrastRatioElement.id = "deut-contrast-ratio";
+    contrast.appendChild(titleDeutContrastRatioElement);
 
     // Create Deut Contrast's information for big texts
 
-    const titleDeuteranomalyContrastBigElement = document.createElement("p");
-    titleDeuteranomalyContrastBigElement.id = "deut-contrast-big";
-    if (contrastDeuteranomaly >= 4.5) {
-        titleDeuteranomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
-    } else if (contrastDeuteranomaly >= 3) {
-        titleDeuteranomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
+    const titleDeutContrastBigElement = document.createElement("p");
+    titleDeutContrastBigElement.id = "deut-contrast-big";
+    if (contrastDeut >= 4.5) {
+        titleDeutContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
+    } else if (contrastDeut >= 3) {
+        titleDeutContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
     } else {
-        titleDeuteranomalyContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
+        titleDeutContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
-    contrast.appendChild(titleDeuteranomalyContrastBigElement);
+    contrast.appendChild(titleDeutContrastBigElement);
 
     // Create Deut Contrast's information for small texts
 
-    const titleDeuteranomalyContrastSmallElement = document.createElement("p");
-    titleDeuteranomalyContrastSmallElement.id = "deut-contrast-small";
-    if (contrastDeuteranomaly >= 7) {
-        titleDeuteranomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
-    } else if (contrastDeuteranomaly >= 4.5) {
-        titleDeuteranomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
+    const titleDeutContrastSmallElement = document.createElement("p");
+    titleDeutContrastSmallElement.id = "deut-contrast-small";
+    if (contrastDeut >= 7) {
+        titleDeutContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
+    } else if (contrastDeut >= 4.5) {
+        titleDeutContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
     } else {
-        titleDeuteranomalyContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
+        titleDeutContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
-    contrast.appendChild(titleDeuteranomalyContrastSmallElement);
+    contrast.appendChild(titleDeutContrastSmallElement);
 
     // Create Trit Contrast
 
     // Create Trit Contrast's title
 
-    const titleTritanomalyContrastElement = document.createElement("h4");
-    titleTritanomalyContrastElement.innerHTML = "Tritanopia";
-    contrast.appendChild(titleTritanomalyContrastElement);
+    const titleTritContrastElement = document.createElement("h4");
+    titleTritContrastElement.innerHTML = "Tritanopia";
+    contrast.appendChild(titleTritContrastElement);
 
     // Create Trit Contrast's contrast box
 
-    const tritanomalyContrastElement = document.createElement("div");
-    tritanomalyContrastElement.classList.add("contrast-box");
-    tritanomalyContrastElement.id = "trit-contrast-box";
-    tritanomalyContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
-    tritanomalyContrastElement.appendChild(textContrastElement.cloneNode(true));
-    tritanomalyContrastElement.style.color = normalToTritanomaly(fgColor);
-    tritanomalyContrastElement.style.backgroundColor = colorTrit;
-    contrast.appendChild(tritanomalyContrastElement);
+    const tritContrastElement = document.createElement("div");
+    tritContrastElement.classList.add("contrast-box");
+    tritContrastElement.id = "trit-contrast-box";
+    tritContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
+    tritContrastElement.appendChild(textContrastElement.cloneNode(true));
+    tritContrastElement.style.color = normalToTrit(fgColor);
+    tritContrastElement.style.backgroundColor = colorTrit;
+    contrast.appendChild(tritContrastElement);
 
     // Create Trit Contrast's information
 
-    const titleTritanomalyContrastRatioElement = document.createElement("p");
-    const contrastTritanomaly = getContrast(fgColor, colorTrit);
-    titleTritanomalyContrastRatioElement.innerHTML = "Razão de Contraste: " + contrastTritanomaly;
-    titleTritanomalyContrastRatioElement.id = "trit-contrast-ratio";
-    contrast.appendChild(titleTritanomalyContrastRatioElement);
+    const titleTritContrastRatioElement = document.createElement("p");
+    const contrastTrit = getContrast(fgColor, colorTrit);
+    titleTritContrastRatioElement.innerHTML = "Razão de Contraste: " + contrastTrit;
+    titleTritContrastRatioElement.id = "trit-contrast-ratio";
+    contrast.appendChild(titleTritContrastRatioElement);
 
     // Create Trit Contrast's information for big texts
 
-    const titleTritanomalyContrastBigElement = document.createElement("p");
-    titleTritanomalyContrastBigElement.id = "trit-contrast-big";
-    if (contrastTritanomaly >= 4.5) {
-        titleTritanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
-    } else if (contrastTritanomaly >= 3) {
-        titleTritanomalyContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
+    const titleTritContrastBigElement = document.createElement("p");
+    titleTritContrastBigElement.id = "trit-contrast-big";
+    if (contrastTrit >= 4.5) {
+        titleTritContrastBigElement.innerHTML = "Para fontes grandes: Nível AAA<sup>[2]</sup>";
+    } else if (contrastTrit >= 3) {
+        titleTritContrastBigElement.innerHTML = "Para fontes grandes: Nível AA<sup>[2]</sup>";
     } else {
-        titleTritanomalyContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
+        titleTritContrastBigElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes grandes";
     }
-    contrast.appendChild(titleTritanomalyContrastBigElement);
+    contrast.appendChild(titleTritContrastBigElement);
 
     // Create Trit Contrast's information for small texts
 
-    const titleTritanomalyContrastSmallElement = document.createElement("p");
-    titleTritanomalyContrastSmallElement.id = "trit-contrast-small";
-    if (contrastTritanomaly >= 7) {
-        titleTritanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
-    } else if (contrastTritanomaly >= 4.5) {
-        titleTritanomalyContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
+    const titleTritContrastSmallElement = document.createElement("p");
+    titleTritContrastSmallElement.id = "trit-contrast-small";
+    if (contrastTrit >= 7) {
+        titleTritContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AAA<sup>[2]</sup>";
+    } else if (contrastTrit >= 4.5) {
+        titleTritContrastSmallElement.innerHTML = "Para fontes pequenas: Nível AA<sup>[2]</sup>";
     } else {
-        titleTritanomalyContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
+        titleTritContrastSmallElement.innerHTML = "Sem conformidade com a WCAG 2.1 para fontes pequenas";
     }
-    contrast.appendChild(titleTritanomalyContrastSmallElement);
+    contrast.appendChild(titleTritContrastSmallElement);
 }
 
 export function createExamples(colorHex) {
@@ -994,7 +994,7 @@ export function createExamples(colorHex) {
     examplesColor3Label.appendChild(examplesColor3Hex);
 
     // Create Examples' Color 3 color picker
-    
+
     const examplesColor3Picker = document.createElement("input");
     examplesColor3Picker.type = "color";
     examplesColor3Picker.value = color3;
@@ -1025,7 +1025,7 @@ export function createExamples(colorHex) {
     examplesColor4Label.appendChild(examplesColor4Picker);
 
     // Add events for change in Colors 1/2/3/4 color code input and color picker
-    
+
     examplesColor1Picker.addEventListener("change", updateExamplesValues);
     examplesColor1Hex.addEventListener("keyup", updateExamplesValues);
     examplesColor2Picker.addEventListener("change", updateExamplesValues);
@@ -1053,7 +1053,7 @@ export function createExamples(colorHex) {
 
     // Create Prot Graphic
 
-    createSVG("prot", normalToProtanomaly(color1), normalToProtanomaly(color2), normalToProtanomaly(color3), normalToProtanomaly(color4));
+    createSVG("prot", normalToProt(color1), normalToProt(color2), normalToProt(color3), normalToProt(color4));
 
     // Create Deut Graphic's title
 
@@ -1063,7 +1063,7 @@ export function createExamples(colorHex) {
 
     // Create Deut Graphic
 
-    createSVG("deut", normalToDeuteranomaly(color1), normalToDeuteranomaly(color2), normalToDeuteranomaly(color3), normalToDeuteranomaly(color4));
+    createSVG("deut", normalToDeut(color1), normalToDeut(color2), normalToDeut(color3), normalToDeut(color4));
 
     // Create Trit Graphic's title
 
@@ -1073,7 +1073,7 @@ export function createExamples(colorHex) {
 
     // Create Trit Graphic
 
-    createSVG("trit", normalToTritanomaly(color1), normalToTritanomaly(color2), normalToTritanomaly(color3), normalToTritanomaly(color4));
+    createSVG("trit", normalToTrit(color1), normalToTrit(color2), normalToTrit(color3), normalToTrit(color4));
 }
 
 export function createLearnMore(colorName) {
