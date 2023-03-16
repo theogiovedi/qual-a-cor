@@ -1,7 +1,23 @@
-var cam, canvasWidth, canvasHeight;
+var cam, w, h;
 const camDiv = document.getElementById("cam");
 const errorMessage = document.createElement("p");
 var hasVideoInput = false;
+
+function createCameraCanvas() {
+    camDiv.innerHTML = "";
+    w = window.innerWidth - 40;
+    if (w > 600) {
+        w = 600;
+    }
+    if (window.innerWidth < window.innerHeight) {
+        h = w * 4 / 3;
+    }
+    else {
+        h = w * 3 / 4;
+    }
+    canvas = createCanvas(w, h);
+    canvas.parent("cam");
+}
 
 function setup() {
 
@@ -27,36 +43,9 @@ function setup() {
                 }
             });
             cam.hide();
-            canvasWidth = windowWidth - 40;
-            if (canvasWidth > 600) {
-                canvasWidth = 600;
-            }
-            if (windowWidth < windowHeight) {
-                canvasHeight = canvasWidth * 4 / 3;
-            }
-            else {
-                canvasHeight = canvasWidth * 3 / 4;
-            }
-            canvas = createCanvas(canvasWidth, canvasHeight);
-            canvas.parent("cam");
+            createCameraCanvas();
         }
     });
-
-
-}
-
-function resizeCamera() {
-    w = windowWidth - 40;
-    if (w > 600) {
-        w = 600;
-    }
-    
-    if (windowWidth < windowHeight) {
-        h = w * 4 / 3;
-    } else  {
-        h = w * 3 / 4;
-    }
-    resizeCanvas(w, h)
 }
 
 function draw() {
@@ -72,7 +61,7 @@ function draw() {
     switch (type) {
 
         case "normal":
-            image(camFrame, 0, 0, canvasWidth, canvasHeight);
+            image(camFrame, 0, 0, w, h);
             return
         case "prot":
             for (let i = 0; i < camFrame.pixels.length; i += 4) {
@@ -209,9 +198,9 @@ function draw() {
     }
 
     camFrame.updatePixels();
-    image(camFrame, 0, 0, canvasWidth, canvasHeight);
+    image(camFrame, 0, 0, w, h);
 }
 
-let viewport = window.matchMedia("(orientation: portrait)")
+let viewport = window.matchMedia("(orientation: landscape)")
 
-viewport.addEventListener("change", resizeCamera);
+viewport.addEventListener("change", createCameraCanvas);
