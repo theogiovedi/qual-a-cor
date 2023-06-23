@@ -1,17 +1,17 @@
 import { setupCamera } from "./lib/setup.js";
 import { updateCameraCanvas } from "./lib/canvas.js";
-import { drawSimulationFrame } from "./lib/frame.js";
 import { menu } from "./lib/menu.js";
 import { registerServiceWorker } from "./lib/pwa.js";
 import { framerate } from "./lib/framerate.js";
 
+// Slider control for Hue shift
+
+const slider = document.getElementById("slider");
+const sliderLabel = document.getElementById("slider-label");
+
 // Camera Video Element
 
 const cam = document.createElement("video");
-
-// CVD Type Selector
-
-const type = document.getElementById("type");
 
 // Canvas for drawing camera frames
 
@@ -44,11 +44,18 @@ window.addEventListener("load", () => {
   });
 });
 
+// Updating slider label
+
+slider.addEventListener("input", () => {
+  sliderLabel.innerText = `${slider.value}º`;
+  camCanvas.style.filter = `hue-rotate(${slider.value}deg)`;
+});
+
 // Loop for generating frames
 
 cam.addEventListener("playing", () => {
   setInterval(() => {
-    drawSimulationFrame(cam, camContext, type, w, h);
+    camContext.drawImage(cam, 0, 0, w, h);
   }, framerate);
 });
 

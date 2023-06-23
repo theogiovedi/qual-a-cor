@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
-    <link rel="stylesheet" href="./styles/live.css" />
-    <title>Qual a Cor? | Ao Vivo</title>
+    <link rel="stylesheet" href="./styles/palettes.css" />
+    <title>Qual a Cor? | Matizes</title>
     <meta
       name="description"
-      content="Veja o mundo ao seu redor nos olhos de uma pessoa com daltonismo"
+      content="Determine as cores predominantes ao vivo na sua webcam"
     />
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" href="./images/1024-maskable.png" />
@@ -27,13 +27,9 @@
       </nav>
     </header>
     <main id="main">
-      <h1>Ao Vivo</h1>
-      <select name="type" id="type">
-        <option value="normal" selected>Normal</option>
-        <option value="prot">Protanopia</option>
-        <option value="deut">Deuteranopia</option>
-        <option value="trit">Tritanopia</option>
-      </select>
+      <h1>Matizes</h1>
+      <label for="slider" id="slider-label">0º</label>
+      <input type="range" min="0" max="360" value="0" id="slider" />
       <div id="cam"></div>
       <footer id="main-footer">
         <p>
@@ -104,6 +100,6 @@
       <div id="close-menu">❌</div>
     </div>
 
-    <script src="./scripts/live.js" type="module"></script>
+    <script src="./scripts/hues.js" type="module"></script>
   </body>
 </html>

@@ -5,12 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
-    <link rel="stylesheet" href="./styles/live.css" />
-    <title>Qual a Cor? | Ao Vivo</title>
-    <meta
-      name="description"
-      content="Veja o mundo ao seu redor nos olhos de uma pessoa com daltonismo"
-    />
+    <link rel="stylesheet" href="./styles/photos.css" />
+    <title>Qual a Cor? | Fotos</title>
+    <meta name="description" content="Simule o daltonismo nas suas fotos." />
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" href="./images/1024-maskable.png" />
     <meta name="theme-color" content="#F5F5F5" />
@@ -27,19 +24,23 @@
       </nav>
     </header>
     <main id="main">
-      <h1>Ao Vivo</h1>
+      <h1>Fotos</h1>
+      <label id="file-label">
+        <input type="file" id="file" accept="image/*" />
+        Selecione a foto
+      </label>
       <select name="type" id="type">
         <option value="normal" selected>Normal</option>
         <option value="prot">Protanopia</option>
         <option value="deut">Deuteranopia</option>
         <option value="trit">Tritanopia</option>
       </select>
-      <div id="cam"></div>
+      <div id="photo"></div>
       <footer id="main-footer">
         <p>
-          É importante lembrar que a imagem da sua câmera não é enviada para
-          nenhum lugar, e os filtros são aplicados apenas no seu navegador. Sua
-          imagem não é armazenada em nenhum servidor.
+          É importante lembrar que suas fotos não são enviadas para nenhum
+          lugar, e os filtros são aplicados apenas no seu navegador. Suas fotos
+          não são armazenadas em nenhum servidor.
         </p>
       </footer>
     </main>
@@ -104,6 +105,6 @@
       <div id="close-menu">❌</div>
     </div>
 
-    <script src="./scripts/live.js" type="module"></script>
+    <script src="./scripts/photos.js" type="module"></script>
   </body>
 </html>

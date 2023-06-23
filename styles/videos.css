@@ -1,0 +1,60 @@
+@import url("./general.css");
+@import url("./nav.css");
+@import url("./select.css");
+@import url("./file.css");
+@import url("./canvas.css");
+
+select {
+  display: none;
+}
+
+#video-details {
+  display: none;
+  width: calc(100% - 40px);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#progress-bar {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 3px solid var(--foreground-color);
+  background: var(--background-color);
+}
+
+#progress-bar::-webkit-progress-bar {
+  background: var(--background-color);
+}
+
+#progress-bar::-webkit-progress-value {
+  background: var(--foreground-color);
+}
+
+#progress-bar::-moz-progress-bar {
+  background: var(--foreground-color);
+}
+
+#video-controls {
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  cursor: pointer;
+}
+
+#backward,
+#toggle,
+#rewind,
+#forward {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  height: 35px;
+  border: 3px solid var(--foreground-color);
+  color: var(--foreground-color);
+}

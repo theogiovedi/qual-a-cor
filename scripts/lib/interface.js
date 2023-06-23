@@ -1,171 +1,6 @@
 import { getColorName } from './colors.js'
-import { darkMode } from './main.js';
-import { normalToProt, normalToDeut, normalToTrit, getRelativeLuminance, getContrast, getClosestColor } from './calc.js'
+import { normalToProt, normalToDeut, normalToTrit, getRelativeLuminance, getContrast, getClosestColor, rgbToHex, hexToRgb } from './calc.js'
 import { createSVG } from './svg.js';
-
-export function toggleDarkMode() {
-
-    // Get Page Elements
-    const root = document.querySelector(":root");
-    const logo = document.getElementById("navlogo");
-
-    // Get Styles and Variables
-    const style = getComputedStyle(root);
-    const bg = style.getPropertyValue("--background-color");
-    const fg = style.getPropertyValue("--foreground-color");
-    const black = style.getPropertyValue("--black");
-    const white = style.getPropertyValue("--white");
-    const gray = style.getPropertyValue("--gray");
-    const darkGray = style.getPropertyValue("--dark-gray");
-
-    // Get SVG Elements
-
-    const svgNormal = document.getElementById("svg-normal");
-    const svgProt = document.getElementById("svg-prot");
-    const svgDeut = document.getElementById("svg-deut");
-    const svgTrit = document.getElementById("svg-trit");
-
-    // To Light Mode
-
-    if (fg == white && bg == black) {
-        root.style.setProperty("--foreground-color", black);
-        root.style.setProperty("--background-color", white);
-        root.style.setProperty("--secondary-color", darkGray)
-        darkMode.classList.toggle("bi-moon-stars-fill");
-        darkMode.classList.toggle("bi-brightness-high-fill");
-        logo.src = "./images/navlogo-light.svg";
-
-        // Modify SVG Elements
-
-        if (!svgNormal) {
-            return;
-        }
-
-        // Normal Graphic
-
-        const fgNormal = svgNormal.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgNormal.length; i++) {
-            fgNormal[i].setAttribute("stroke", black);
-            fgNormal[i].setAttribute("fill", black);
-        }
-
-        const bgNormal = svgNormal.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgNormal.length; i++) {
-            bgNormal[i].setAttribute("stroke", gray);
-            bgNormal[i].setAttribute("fill", gray);
-        }
-
-        // Prot Graphic
-
-        const fgProt = svgProt.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgProt.length; i++) {
-            fgProt[i].setAttribute("stroke", black);
-            fgProt[i].setAttribute("fill", black);
-        }
-
-        const bgProt = svgProt.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgProt.length; i++) {
-            bgProt[i].setAttribute("stroke", gray);
-            bgProt[i].setAttribute("fill", gray);
-        }
-
-        // Deut Graphic
-
-        const fgDeut = svgDeut.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgDeut.length; i++) {
-            fgDeut[i].setAttribute("stroke", black);
-            fgDeut[i].setAttribute("fill", black);
-        }
-
-        const bgDeut = svgDeut.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgDeut.length; i++) {
-            bgDeut[i].setAttribute("stroke", gray);
-            bgDeut[i].setAttribute("fill", gray);
-        }
-
-        // Trit Graphic
-
-        const fgTrit = svgTrit.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgTrit.length; i++) {
-            fgTrit[i].setAttribute("stroke", black);
-            fgTrit[i].setAttribute("fill", black);
-        }
-        const bgTrit = svgTrit.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgTrit.length; i++) {
-            bgTrit[i].setAttribute("stroke", gray);
-            bgTrit[i].setAttribute("fill", gray);
-        }
-
-
-        // To Dark Mode
-
-    } else {
-        root.style.setProperty("--foreground-color", white);
-        root.style.setProperty("--background-color", black);
-        root.style.setProperty("--secondary-color", gray);
-        darkMode.classList.toggle("bi-moon-stars-fill");
-        darkMode.classList.toggle("bi-brightness-high-fill");
-        logo.src = "./images/navlogo-dark.svg";
-
-        // Modify SVG Elements
-
-        if (!svgNormal) {
-            return;
-        }
-
-        // Normal Graphic
-
-        const fgNormal = svgNormal.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgNormal.length; i++) {
-            fgNormal[i].setAttribute("stroke", white);
-            fgNormal[i].setAttribute("fill", white);
-        }
-        const bgNormal = svgNormal.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgNormal.length; i++) {
-            bgNormal[i].setAttribute("stroke", darkGray);
-            bgNormal[i].setAttribute("fill", darkGray);
-        }
-
-        // Prot Graphic
-
-        const fgProt = svgProt.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgProt.length; i++) {
-            fgProt[i].setAttribute("stroke", white);
-            fgProt[i].setAttribute("fill", white);
-        }
-        const bgProt = svgProt.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgProt.length; i++) {
-            bgProt[i].setAttribute("stroke", darkGray);
-            bgProt[i].setAttribute("fill", darkGray);
-        }
-
-        // Deut Graphic
-
-        const fgDeut = svgDeut.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgDeut.length; i++) {
-            fgDeut[i].setAttribute("stroke", white);
-            fgDeut[i].setAttribute("fill", white);
-        }
-        const bgDeut = svgDeut.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgDeut.length; i++) {
-            bgDeut[i].setAttribute("stroke", darkGray);
-            bgDeut[i].setAttribute("fill", darkGray);
-        }
-
-        // Trit Graphic
-
-        const fgTrit = svgTrit.getElementsByClassName("fg-line");
-        for (let i = 0; i < fgTrit.length; i++) {
-            fgTrit[i].setAttribute("stroke", white);
-            fgTrit[i].setAttribute("fill", white);
-        }
-        const bgTrit = svgTrit.getElementsByClassName("bg-line");
-        for (let i = 0; i < bgTrit.length; i++) {
-            bgTrit[i].setAttribute("stroke", darkGray);
-            bgTrit[i].setAttribute("fill", darkGray);
-        }
-    }
-}
 
 export function updateContrastValues() {
 
@@ -216,15 +51,15 @@ export function updateContrastValues() {
 
     // Simulate foreground colors
 
-    const fgProt = normalToProt(fg);
-    const fgDeut = normalToDeut(fg);
-    const fgTrit = normalToTrit(fg);
+    const fgProt = rgbToHex(normalToProt(hexToRgb(fg)));
+    const fgDeut = rgbToHex(normalToDeut(hexToRgb(fg)));
+    const fgTrit = rgbToHex(normalToTrit(hexToRgb(fg)));
 
     // Simulate background colors
 
-    const bgProt = normalToProt(bg);
-    const bgDeut = normalToDeut(bg);
-    const bgTrit = normalToTrit(bg);
+    const bgProt = rgbToHex(normalToProt(hexToRgb(bg)));
+    const bgDeut = rgbToHex(normalToDeut(hexToRgb(bg)));
+    const bgTrit = rgbToHex(normalToTrit(hexToRgb(bg)));
 
     // Update background colors
 
@@ -409,24 +244,24 @@ export function updateExamplesValues() {
 
     // Set Color for Lines in Prot Graphic
 
-    line1Prot.setAttribute("stroke", normalToProt(color1));
-    line2Prot.setAttribute("stroke", normalToProt(color2));
-    line3Prot.setAttribute("stroke", normalToProt(color3));
-    line4Prot.setAttribute("stroke", normalToProt(color4));
+    line1Prot.setAttribute("stroke", rgbToHex(normalToProt(hexToRgb(color1))));
+    line2Prot.setAttribute("stroke", rgbToHex(normalToProt(hexToRgb(color2))));
+    line3Prot.setAttribute("stroke", rgbToHex(normalToProt(hexToRgb(color3))));
+    line4Prot.setAttribute("stroke", rgbToHex(normalToProt(hexToRgb(color4))));
 
     // Set Color for Lines in Deut Graphic
 
-    line1Deut.setAttribute("stroke", normalToDeut(color1));
-    line2Deut.setAttribute("stroke", normalToDeut(color2));
-    line3Deut.setAttribute("stroke", normalToDeut(color3));
-    line4Deut.setAttribute("stroke", normalToDeut(color4));
+    line1Deut.setAttribute("stroke", rgbToHex(normalToDeut(hexToRgb(color1))));
+    line2Deut.setAttribute("stroke", rgbToHex(normalToDeut(hexToRgb(color2))));
+    line3Deut.setAttribute("stroke", rgbToHex(normalToDeut(hexToRgb(color3))));
+    line4Deut.setAttribute("stroke", rgbToHex(normalToDeut(hexToRgb(color4))));
 
     // Set Color for Lines in Trit Graphic
 
-    line1Trit.setAttribute("stroke", normalToTrit(color1));
-    line2Trit.setAttribute("stroke", normalToTrit(color2));
-    line3Trit.setAttribute("stroke", normalToTrit(color3));
-    line4Trit.setAttribute("stroke", normalToTrit(color4));
+    line1Trit.setAttribute("stroke", rgbToHex(normalToTrit(hexToRgb(color1))));
+    line2Trit.setAttribute("stroke", rgbToHex(normalToTrit(hexToRgb(color2))));
+    line3Trit.setAttribute("stroke", rgbToHex(normalToTrit(hexToRgb(color3))));
+    line4Trit.setAttribute("stroke", rgbToHex(normalToTrit(hexToRgb(color4))));
 
     // Set Color for Label's Color Rectangle in Normal Graphic
 
@@ -437,24 +272,24 @@ export function updateExamplesValues() {
 
     // Set Color for Label's Color Rectangle in Prot Graphic
 
-    rect1Prot.setAttribute("fill", normalToProt(color1));
-    rect2Prot.setAttribute("fill", normalToProt(color2));
-    rect3Prot.setAttribute("fill", normalToProt(color3));
-    rect4Prot.setAttribute("fill", normalToProt(color4));
+    rect1Prot.setAttribute("fill", rgbToHex(normalToProt(hexToRgb(color1))));
+    rect2Prot.setAttribute("fill", rgbToHex(normalToProt(hexToRgb(color2))));
+    rect3Prot.setAttribute("fill", rgbToHex(normalToProt(hexToRgb(color3))));
+    rect4Prot.setAttribute("fill", rgbToHex(normalToProt(hexToRgb(color4))));
 
     // Set Color for Label's Color Rectangle in Deut Graphic
 
-    rect1Deut.setAttribute("fill", normalToDeut(color1));
-    rect2Deut.setAttribute("fill", normalToDeut(color2));
-    rect3Deut.setAttribute("fill", normalToDeut(color3));
-    rect4Deut.setAttribute("fill", normalToDeut(color4));
+    rect1Deut.setAttribute("fill", rgbToHex(normalToDeut(hexToRgb(color1))));
+    rect2Deut.setAttribute("fill", rgbToHex(normalToDeut(hexToRgb(color2))));
+    rect3Deut.setAttribute("fill", rgbToHex(normalToDeut(hexToRgb(color3))));
+    rect4Deut.setAttribute("fill", rgbToHex(normalToDeut(hexToRgb(color4))));
 
     // Set Color for Label's Color Rectangle in Trit Graphic
 
-    rect1Trit.setAttribute("fill", normalToTrit(color1));
-    rect2Trit.setAttribute("fill", normalToTrit(color2));
-    rect3Trit.setAttribute("fill", normalToTrit(color3));
-    rect4Trit.setAttribute("fill", normalToTrit(color4));
+    rect1Trit.setAttribute("fill", rgbToHex(normalToTrit(hexToRgb(color1))));
+    rect2Trit.setAttribute("fill", rgbToHex(normalToTrit(hexToRgb(color2))));
+    rect3Trit.setAttribute("fill", rgbToHex(normalToTrit(hexToRgb(color3))));
+    rect4Trit.setAttribute("fill", rgbToHex(normalToTrit(hexToRgb(color4))));
 }
 
 export function createResults(colorHex) {
@@ -471,9 +306,9 @@ export function createResults(colorHex) {
 
     const closestColor = getClosestColor(colorHex);
     const colorName = getColorName(closestColor);
-    const colorProt = normalToProt(colorHex);
-    const colorDeut = normalToDeut(colorHex);
-    const colorTrit = normalToTrit(colorHex);
+    const colorProt = rgbToHex(normalToProt(hexToRgb(colorHex)));
+    const colorDeut = rgbToHex(normalToDeut(hexToRgb(colorHex)));
+    const colorTrit = rgbToHex(normalToTrit(hexToRgb(colorHex)));
 
     // Create Title
 
@@ -483,18 +318,10 @@ export function createResults(colorHex) {
 
     // Create Color Name Container
 
-    const colorNameElement = document.createElement("h3");
-    colorNameElement.innerHTML = colorName;
+    const colorNameElement = document.createElement("span");
+    colorNameElement.id = "color-name";
+    colorNameElement.innerHTML = `${colorName}<sup>[1]</sup>`;
     results.appendChild(colorNameElement);
-
-    // If necessary, append a "aprox" to indicate that the name may be wrong
-
-    if (colorHex.toUpperCase() != closestColor.toUpperCase()) {
-        const approxElement = document.createElement("span");
-        approxElement.innerHTML = 'aprox.<sup>[1]</sup>';
-        approxElement.classList.add("approx");
-        colorNameElement.appendChild(approxElement);
-    }
 
     // Create Normal:
 
@@ -512,7 +339,7 @@ export function createResults(colorHex) {
     // Create Normal:'s color code
 
     const colorHexNameElement = document.createElement("code");
-    colorHexNameElement.innerHTML = colorHex;
+    colorHexNameElement.innerHTML = colorHex.toUpperCase();
     colorHexElement.append(colorHexNameElement);
 
     // Create Prot:
@@ -586,9 +413,9 @@ export function createContrast(colorHex) {
     // Set the variables
 
     const relativeLuminance = getRelativeLuminance(colorHex);
-    const colorProt = normalToProt(colorHex);
-    const colorDeut = normalToDeut(colorHex);
-    const colorTrit = normalToTrit(colorHex);
+    const colorProt = rgbToHex(normalToProt(hexToRgb(colorHex)));
+    const colorDeut = rgbToHex(normalToDeut(hexToRgb(colorHex)));
+    const colorTrit = rgbToHex(normalToTrit(hexToRgb(colorHex)));
     let bgColor = colorHex;
     let fgColor;
     if (relativeLuminance < 0.5) {
@@ -686,7 +513,7 @@ export function createContrast(colorHex) {
 
     // Create Normal Contrast's title
 
-    const titleNormalContrastElement = document.createElement("h4");
+    const titleNormalContrastElement = document.createElement("h3");
     titleNormalContrastElement.innerHTML = "Normal";
     contrast.appendChild(titleNormalContrastElement);
 
@@ -739,7 +566,7 @@ export function createContrast(colorHex) {
 
     // Create Prot Contrast's title
 
-    const titleProtContrastElement = document.createElement("h4");
+    const titleProtContrastElement = document.createElement("h3");
     titleProtContrastElement.innerHTML = "Protanopia";
     contrast.appendChild(titleProtContrastElement);
 
@@ -750,7 +577,7 @@ export function createContrast(colorHex) {
     protContrastElement.id = "prot-contrast-box";
     protContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
     protContrastElement.appendChild(textContrastElement.cloneNode(true));
-    protContrastElement.style.color = normalToDeut(fgColor);
+    protContrastElement.style.color = rgbToHex(normalToDeut(hexToRgb(fgColor)));
     protContrastElement.style.backgroundColor = colorProt;
     contrast.appendChild(protContrastElement);
 
@@ -792,7 +619,7 @@ export function createContrast(colorHex) {
 
     // Create Deut Contrast's title
 
-    const titleDeutContrastElement = document.createElement("h4");
+    const titleDeutContrastElement = document.createElement("h3");
     titleDeutContrastElement.innerHTML = "Deuteranopia";
     contrast.appendChild(titleDeutContrastElement);
 
@@ -803,7 +630,7 @@ export function createContrast(colorHex) {
     deutContrastElement.id = "deut-contrast-box";
     deutContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
     deutContrastElement.appendChild(textContrastElement.cloneNode(true));
-    deutContrastElement.style.color = normalToDeut(fgColor);
+    deutContrastElement.style.color = rgbToHex(normalToDeut(hexToRgb(fgColor)));
     deutContrastElement.style.backgroundColor = colorDeut;
     contrast.appendChild(deutContrastElement);
 
@@ -845,7 +672,7 @@ export function createContrast(colorHex) {
 
     // Create Trit Contrast's title
 
-    const titleTritContrastElement = document.createElement("h4");
+    const titleTritContrastElement = document.createElement("h3");
     titleTritContrastElement.innerHTML = "Tritanopia";
     contrast.appendChild(titleTritContrastElement);
 
@@ -856,7 +683,7 @@ export function createContrast(colorHex) {
     tritContrastElement.id = "trit-contrast-box";
     tritContrastElement.appendChild(textTitleContrastElement.cloneNode(true));
     tritContrastElement.appendChild(textContrastElement.cloneNode(true));
-    tritContrastElement.style.color = normalToTrit(fgColor);
+    tritContrastElement.style.color = rgbToHex(normalToTrit(hexToRgb(fgColor)));
     tritContrastElement.style.backgroundColor = colorTrit;
     contrast.appendChild(tritContrastElement);
 
@@ -898,6 +725,7 @@ export function createContrast(colorHex) {
 export function createExamples(colorHex) {
 
     // Get Examples container
+
     const examples = document.getElementById("examples");
     examples.innerHTML = "";
 
@@ -1037,7 +865,7 @@ export function createExamples(colorHex) {
 
     // Create Normal Graphic's title
 
-    const titleNormalGraphic = document.createElement("h4");
+    const titleNormalGraphic = document.createElement("h3");
     titleNormalGraphic.innerHTML = "Normal";
     examples.appendChild(titleNormalGraphic);
 
@@ -1047,33 +875,33 @@ export function createExamples(colorHex) {
 
     // Create Prot Graphic's title
 
-    const titleProtGraphic = document.createElement("h4");
+    const titleProtGraphic = document.createElement("h3");
     titleProtGraphic.innerHTML = "Protanopia";
     examples.appendChild(titleProtGraphic);
 
     // Create Prot Graphic
 
-    createSVG("prot", normalToProt(color1), normalToProt(color2), normalToProt(color3), normalToProt(color4));
+    createSVG("prot", rgbToHex(normalToProt(hexToRgb(color1))), rgbToHex(normalToProt(hexToRgb(color2))), rgbToHex(normalToProt(hexToRgb(color3))), rgbToHex(normalToProt(hexToRgb(color4))));
 
     // Create Deut Graphic's title
 
-    const titleDeutGraphic = document.createElement("h4");
+    const titleDeutGraphic = document.createElement("h3");
     titleDeutGraphic.innerHTML = "Deuteranopia";
     examples.appendChild(titleDeutGraphic);
 
     // Create Deut Graphic
 
-    createSVG("deut", normalToDeut(color1), normalToDeut(color2), normalToDeut(color3), normalToDeut(color4));
+    createSVG("deut", rgbToHex(normalToDeut(hexToRgb(color1))), rgbToHex(normalToDeut(hexToRgb(color2))), rgbToHex(normalToDeut(hexToRgb(color3))), rgbToHex(normalToDeut(hexToRgb(color4))));
 
     // Create Trit Graphic's title
 
-    const titleTritGraphic = document.createElement("h4");
+    const titleTritGraphic = document.createElement("h3");
     titleTritGraphic.innerHTML = "Tritanopia";
     examples.appendChild(titleTritGraphic);
 
     // Create Trit Graphic
 
-    createSVG("trit", normalToTrit(color1), normalToTrit(color2), normalToTrit(color3), normalToTrit(color4));
+    createSVG("trit", rgbToHex(normalToTrit(hexToRgb(color1))), rgbToHex(normalToTrit(hexToRgb(color2))), rgbToHex(normalToTrit(hexToRgb(color3))), rgbToHex(normalToTrit(hexToRgb(color4))));
 }
 
 export function createLearnMore(colorName) {
@@ -1107,4 +935,40 @@ export function createMainFooter() {
     const constrastExplanationElement = document.createElement("p");
     constrastExplanationElement.innerHTML = "[2] O Nível AA indica a conformidade mínima com a WCAG 2.1, com uma razão de contraste de 3:1 para textos grandes (mais de 18 pt em tamanho normal ou 14 pt em negrito) e 4.5:1 para textos pequenos (menores que 18 pt). No nível AAA, que indica a conformidade elevada com a WCAG 2.1, as razões de contraste sobem para 4.5:1 e 7:1, respectivamente.";
     mainFooter.appendChild(constrastExplanationElement);
+}
+
+export function createPalettes(centroids) {
+    const palettes = document.getElementById("palettes");
+    const paletteButton = document.getElementById("palette-button");
+
+    palettes.innerHTML = "";
+
+    let sortedCentroids = centroids;
+    sortedCentroids.sort((first, second) => {
+        let difference = getRelativeLuminance(rgbToHex(first)) - getRelativeLuminance(rgbToHex(second));
+        if (difference < 0) {
+            return 1;
+        } else if (difference > 0) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+
+    for (let i = 0; i < sortedCentroids.length; i++) {
+        let color = document.createElement("p");
+        color.innerHTML = `<div class="color-square" style="background-color: rgb(${sortedCentroids[i][0]}, ${sortedCentroids[i][1]}, ${sortedCentroids[i][2]})"></div>${getColorName(getClosestColor(rgbToHex(sortedCentroids[i])))}`;
+        color.style.display = "block";
+        palettes.appendChild(color);
+    }
+    
+    paletteButton.innerHTML = "Apagar paleta";
+}
+
+export function deletePalettes() {
+    const palettes = document.getElementById("palettes");
+    const paletteButton = document.getElementById("palette-button");
+
+    palettes.innerHTML = "";
+    paletteButton.innerHTML = "Extrair paleta";
 }

@@ -1,0 +1,37 @@
+#palettes p, #objects p {
+    display: block;
+    width: calc(100% - 40px);
+    max-width: 600px;
+    margin: 10px auto;
+    font-size: 28px;
+    text-align: left;
+}
+
+#palettes p div, #objects p div {
+    margin: 0 10px -10px 0;
+}
+
+.color-square {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--foreground-color);
+}
+
+@media only screen and (max-width: 400px) {
+    #palettes p, #objects p {
+        width: calc(100% - 40px);
+        margin: 10px auto;
+        font-size: 22px;
+        text-align: left;
+    }
+    
+    #palettes p div, #objects p div {
+        margin: 0 5px -5px 0;
+    }
+    
+    .color-square {
+        width: 30px;
+        height: 30px;
+    }
+}

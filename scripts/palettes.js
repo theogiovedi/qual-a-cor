@@ -1,17 +1,20 @@
+import { kMeans } from "./lib/calc.js";
+import { createPalettes, deletePalettes } from "./lib/interface.js";
 import { setupCamera } from "./lib/setup.js";
-import { updateCameraCanvas } from "./lib/canvas.js";
 import { drawSimulationFrame } from "./lib/frame.js";
+import { updateCameraCanvas } from "./lib/canvas.js";
 import { menu } from "./lib/menu.js";
 import { registerServiceWorker } from "./lib/pwa.js";
 import { framerate } from "./lib/framerate.js";
 
+// Slider control for K
+
+const slider = document.getElementById("slider");
+const sliderLabel = document.getElementById("slider-label");
+
 // Camera Video Element
 
 const cam = document.createElement("video");
-
-// CVD Type Selector
-
-const type = document.getElementById("type");
 
 // Canvas for drawing camera frames
 
@@ -31,7 +34,29 @@ const camContext = camCanvas.getContext("2d", { willReadFrequently: true });
 // Global variables used in the functions bellow
 
 let w, h;
+let camPixels;
 let windowSizes = [window.innerWidth, window.innerHeight];
+let k = slider.value;
+
+// Update K value when changed
+
+slider.addEventListener("input", () => {
+  k = slider.value;
+  sliderLabel.innerText = k === "1" ? "1 cor" : `${k} cores`;
+});
+
+// Add toggle functionality to palette button
+
+const paletteButton = document.getElementById("palette-button");
+paletteButton.addEventListener("click", () => {
+  if (cam.paused) {
+    deletePalettes();
+    cam.play();
+  } else {
+    cam.pause();
+    createPalettes(kMeans(camPixels, k));
+  }
+});
 
 // Setup Camera
 
@@ -48,7 +73,7 @@ window.addEventListener("load", () => {
 
 cam.addEventListener("playing", () => {
   setInterval(() => {
-    drawSimulationFrame(cam, camContext, type, w, h);
+    camPixels = drawSimulationFrame(cam, camContext, "normal", w, h);
   }, framerate);
 });
 

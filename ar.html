@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
-    <link rel="stylesheet" href="./styles/live.css" />
-    <title>Qual a Cor? | Ao Vivo</title>
+    <link rel="stylesheet" href="./styles/ar.css" />
+    <title>Qual a Cor? | AR</title>
     <meta
       name="description"
-      content="Veja o mundo ao seu redor nos olhos de uma pessoa com daltonismo"
+      content="Simule o daltonismo utilizando realidade aumentada."
     />
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" href="./images/1024-maskable.png" />
@@ -27,14 +27,16 @@
       </nav>
     </header>
     <main id="main">
-      <h1>Ao Vivo</h1>
+      <h1>AR</h1>
       <select name="type" id="type">
-        <option value="normal" selected>Normal</option>
         <option value="prot">Protanopia</option>
         <option value="deut">Deuteranopia</option>
         <option value="trit">Tritanopia</option>
+        <option value="hues">Matizes</option>
       </select>
-      <div id="cam"></div>
+      <label for="slider" id="slider-label">0º</label>
+      <input type="range" min="0" max="360" value="0" id="slider" />
+      <button id="start-button">Começar simulação</button>
       <footer id="main-footer">
         <p>
           É importante lembrar que a imagem da sua câmera não é enviada para
@@ -104,6 +106,15 @@
       <div id="close-menu">❌</div>
     </div>
 
-    <script src="./scripts/live.js" type="module"></script>
+    <div id="cam">
+      <div id="left-side">
+        <canvas id="left"></canvas>
+      </div>
+      <div id="right-side">
+        <canvas id="right"></canvas>
+      </div>
+    </div>
+
+    <script src="./scripts/ar.js" type="module"></script>
   </body>
 </html>

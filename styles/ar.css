@@ -1,0 +1,42 @@
+@import url("./general.css");
+@import url("./nav.css");
+@import url("./button.css");
+@import url("./select.css");
+@import url("./slider.css");
+
+#left-side {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#right-side {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#left {
+  position: absolute;
+  left: 0;
+}
+
+#right {
+  position: absolute;
+  left: -150px;
+}
+
+#cam {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+}
+
+#slider,
+#slider-label {
+  display: none;
+}

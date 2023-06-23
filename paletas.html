@@ -5,11 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.png" />
-    <link rel="stylesheet" href="./styles/live.css" />
-    <title>Qual a Cor? | Ao Vivo</title>
+    <link rel="stylesheet" href="./styles/palettes.css" />
+    <title>Qual a Cor? | Paletas</title>
     <meta
       name="description"
-      content="Veja o mundo ao seu redor nos olhos de uma pessoa com daltonismo"
+      content="Determine as cores predominantes ao vivo na sua webcam"
     />
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" href="./images/1024-maskable.png" />
@@ -27,19 +27,18 @@
       </nav>
     </header>
     <main id="main">
-      <h1>Ao Vivo</h1>
-      <select name="type" id="type">
-        <option value="normal" selected>Normal</option>
-        <option value="prot">Protanopia</option>
-        <option value="deut">Deuteranopia</option>
-        <option value="trit">Tritanopia</option>
-      </select>
+      <h1>Paletas</h1>
+      <label for="slider" id="slider-label">4 cores</label>
+      <input type="range" min="1" max="16" value="4" id="slider" />
       <div id="cam"></div>
+      <button id="palette-button">Extrair paleta</button>
+      <div id="palettes"></div>
       <footer id="main-footer">
         <p>
           É importante lembrar que a imagem da sua câmera não é enviada para
-          nenhum lugar, e os filtros são aplicados apenas no seu navegador. Sua
-          imagem não é armazenada em nenhum servidor.
+          nenhum lugar, e tanto a extração da paleta quanto a aplicação dos
+          filtros são realizados apenas no seu navegador. Sua imagem não é
+          armazenada em nenhum servidor.
         </p>
       </footer>
     </main>
@@ -104,6 +103,6 @@
       <div id="close-menu">❌</div>
     </div>
 
-    <script src="./scripts/live.js" type="module"></script>
+    <script src="./scripts/palettes.js" type="module"></script>
   </body>
 </html>

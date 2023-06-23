@@ -1,0 +1,13 @@
+button {
+    display: block;
+    margin: 25px auto;
+    border: 3px solid var(--foreground-color);
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    font-size: 22px;
+    font-family: inherit;
+    padding: 10px;
+    cursor: pointer;
+    width: calc(100% - 40px);
+    max-width: 600px;
+}

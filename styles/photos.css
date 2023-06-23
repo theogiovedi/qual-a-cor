@@ -1,0 +1,9 @@
+@import url('./general.css');
+@import url('./nav.css');
+@import url('./file.css');
+@import url('./canvas.css');
+@import url('./select.css');
+
+select {
+    display: none;
+}

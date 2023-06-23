@@ -1,5 +1,10 @@
+@import url('./button.css');
 @import url('./general.css');
 @import url('./nav.css');
+
+button {
+    width: fit-content;
+}
 
 input[type="text"] {
     outline: none;
@@ -27,24 +32,6 @@ input[type="color"] {
     border-radius: 0;
 }
 
-button {
-    display: block;
-    margin: 25px auto;
-    border: 3px solid var(--foreground-color);
-    background-color: var(--background-color);
-    color: var(--foreground-color);
-    font-size: 22px;
-    font-family: inherit;
-    padding: 10px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: var(--foreground-color);
-    color: var(--background-color);
-    transition: ease-in-out 0.3s;
-}
-
 .columns {
     display: flex;
     flex-direction: row;
@@ -66,11 +53,17 @@ h2 {
     color: var(--foreground-color);
 }
 
-h3 {
+#color-name {
+    display: block;
     font-size: 70px;
     text-align: center;
     font-weight: normal;
     color: var(--foreground-color);
+    margin: 0 40px;
+}
+
+code {
+    font-family: 'Fira Code', monospace;
 }
 
 #results,
@@ -95,15 +88,17 @@ h3 {
     margin: 0 20px;
 }
 
-.approx {
-    font-size: 26px;
+sup {
     color: var(--secondary-color);
-    margin-left: 10px;
 }
 
-h4 {
+#results sup {
+    font-size: 26px;
+}
+
+h3 {
     color: var(--foreground-color);
-    font-size: 25px;
+    font-size: 28px;
     text-align: center;
     margin-top: 40px;
 }
@@ -119,6 +114,7 @@ label {
 #contrast label,
 #examples label {
     font-weight: bold;
+    font-size: 23px;
 }
 
 .contrast-box {
@@ -151,7 +147,7 @@ h5 {
     max-width: 600px;
 }
 
-svg {
+#examples svg {
     display: block;
     width: calc(100% - 20px);
     margin: 20px auto;
@@ -160,10 +156,11 @@ svg {
 
 #learn-more a {
     display: block;
-    margin: 40px 0;
+    margin: 40px auto;
     text-align: center;
     text-decoration: underline;
     font-size: 20px;
+    width: fit-content;
 }
 
 .credits {
@@ -178,15 +175,11 @@ svg {
 }
 
 @media only screen and (max-width: 600px) {
-    h1 {
-        font-size: 50px;
-    }
-
     h2 {
         font-size: 40px;
     }
 
-    h3 {
+    #color-name {
         font-size: 50px;
         margin: 10px;
     }
@@ -222,7 +215,9 @@ svg {
         display: block;
         margin: 0;
     }
+}
 
+@media only screen and (max-width: 355px) {
     #results p {
         font-size: 18px;
         width: 100%;
