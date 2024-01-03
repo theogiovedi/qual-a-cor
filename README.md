@@ -1,5 +1,5 @@
 <center>
-<img src="./images/navlogo-light.svg">
+<img src="./images/navlogo.svg">
 <h1>Qual a Cor?</h1>
 </center>
 
@@ -50,8 +50,7 @@ de uma pessoa com protanopia, deuteranopia e tritanopia.
 
 ## Tecnologias
 
-O *Qual a Cor?* é desenvolvido em HTML, CSS e JavaScript, junto de 
-tecnologias como [p5.js](https://p5js.org) e [Bootstrap Icons](https://icons.getbootstrap.com/).
+O *Qual a Cor?* é desenvolvido em HTML, CSS e JavaScript.
 
 ## Licença
 
